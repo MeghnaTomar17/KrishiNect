@@ -21,6 +21,14 @@
     <section class="advisory-section" id="advisorySection" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 1rem;">
     </section>
   </main>
+<!-- PDF Viewer Modal -->
+<div id="pdfModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(228, 224, 224, 0.7); z-index:9999; justify-content:center; align-items:center;">
+  <div style="position:relative; width:70%; height:90%; background:#fff; border-radius:10px; overflow:hidden;">
+    <button onclick="closePdf()" style="position:absolute; top:10px; right:10px; z-index:1001; background:#d32f2f; color:white; border:none; padding:6px 10px; border-radius:5px; cursor:pointer;">✖ Close</button>
+
+    <iframe id="pdfFrame" width="100%" height="100%" style="border:none;"></iframe>
+  </div>
+</div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -45,19 +53,38 @@
       section.innerHTML = "";
 
       querySnapshot.forEach((docSnap) => {
-        const data = docSnap.data();
+        const data = docSnap.data(); // ✅ FIX
 
-        const div = document.createElement("div");
-        div.className = "advice-card";
-        div.innerHTML = `
-          <h3>${data.crop}</h3>
+        const card = document.createElement("a");
+        card.className = "advice-card";
+        card.href = "#";
+card.addEventListener("click", (e) => {
+  e.preventDefault();
+  openPdf(data.pdfUrl);
+});
+
+function openPdf(url) {
+  const modal = document.getElementById("pdfModal");
+  const frame = document.getElementById("pdfFrame");
+  frame.src = url;
+  modal.style.display = "flex";
+}
+
+window.closePdf = function () {
+  document.getElementById("pdfModal").style.display = "none";
+  document.getElementById("pdfFrame").src = ""; // Clear iframe to stop PDF loading
+};
+
+
+        card.innerHTML = `
+          <h3>🌾 ${data.crop}</h3>
           <p>
-            ${data.sowing ? `<strong>Sowing:</strong> ${data.sowing}<br>` : ""}
-            ${data.harvest ? `<strong>Harvest:</strong> ${data.harvest}<br>` : ""}
-            <strong>Govt Tip:</strong> ${lang === "hi" ? data.tip_hi : data.tip_en}
+            <strong>${lang === "hi" ? "बुवाई" : "Sowing"}:</strong> ${data.sowing}<br>
+            <strong>${lang === "hi" ? "कटाई" : "Harvest"}:</strong> ${data.harvest}<br>
+            <strong>${lang === "hi" ? "सरकारी सुझाव" : "Govt Tip"}:</strong> ${data.tip_en}<br>
           </p>
         `;
-        section.appendChild(div);
+        section.appendChild(card);
       });
 
       document.getElementById("pageTitle").textContent = lang === "hi" ? "📚 फसल सलाह" : "📚 Crop Advisory";
