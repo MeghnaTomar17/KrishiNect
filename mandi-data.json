@@ -1,20 +1,102 @@
 [
   {
-    "crop": "Wheat",
-    "mandi": "Meerut",
-    "price": "₹2200/quintal",
-    "date": "2025-06-27"
+    "state": "Uttar Pradesh",
+    "data": [
+      { "crop": "Wheat", "price": "₹2250/quintal", "mandi": "Meerut" },
+      { "crop": "Potato", "price": "₹1100/quintal", "mandi": "Agra" },
+      { "crop": "Sugarcane", "price": "₹290/quintal", "mandi": "Muzaffarnagar" },
+      { "crop": "Mustard", "price": "₹5200/quintal", "mandi": "Bareilly" },
+      { "crop": "Tomato", "price": "₹800/quintal", "mandi": "Varanasi" }
+    ]
   },
   {
-    "crop": "Rice",
-    "mandi": "Patna",
-    "price": "₹1800/quintal",
-    "date": "2025-06-27"
+    "state": "Punjab",
+    "data": [
+      { "crop": "Wheat", "price": "₹2300/quintal", "mandi": "Ludhiana" },
+      { "crop": "Basmati Rice", "price": "₹3200/quintal", "mandi": "Amritsar" },
+      { "crop": "Cotton", "price": "₹6200/quintal", "mandi": "Bathinda" },
+      { "crop": "Maize", "price": "₹1800/quintal", "mandi": "Moga" },
+      { "crop": "Barley", "price": "₹1650/quintal", "mandi": "Ferozepur" }
+    ]
   },
   {
-    "crop": "Cotton",
-    "mandi": "Nagpur",
-    "price": "₹6300/quintal",
-    "date": "2025-06-27"
+    "state": "Maharashtra",
+    "data": [
+      { "crop": "Onion", "price": "₹900/quintal", "mandi": "Nashik" },
+      { "crop": "Cotton", "price": "₹6600/quintal", "mandi": "Nagpur" },
+      { "crop": "Soybean", "price": "₹4300/quintal", "mandi": "Akola" },
+      { "crop": "Sugarcane", "price": "₹300/quintal", "mandi": "Kolhapur" },
+      { "crop": "Groundnut", "price": "₹4800/quintal", "mandi": "Ahmednagar" }
+    ]
+  },
+  {
+    "state": "Tamil Nadu",
+    "data": [
+      { "crop": "Rice", "price": "₹1900/quintal", "mandi": "Thanjavur" },
+      { "crop": "Banana", "price": "₹1500/quintal", "mandi": "Trichy" },
+      { "crop": "Chili", "price": "₹7000/quintal", "mandi": "Salem" },
+      { "crop": "Coconut", "price": "₹8500/quintal", "mandi": "Pollachi" },
+      { "crop": "Tomato", "price": "₹900/quintal", "mandi": "Madurai" }
+    ]
+  },
+  {
+    "state": "Bihar",
+    "data": [
+      { "crop": "Maize", "price": "₹1750/quintal", "mandi": "Patna" },
+      { "crop": "Wheat", "price": "₹2150/quintal", "mandi": "Gaya" },
+      { "crop": "Lentil", "price": "₹5200/quintal", "mandi": "Darbhanga" },
+      { "crop": "Rice", "price": "₹1800/quintal", "mandi": "Muzaffarpur" },
+      { "crop": "Mustard", "price": "₹5000/quintal", "mandi": "Purnia" }
+    ]
+  },
+  {
+    "state": "Rajasthan",
+    "data": [
+      { "crop": "Bajra", "price": "₹2100/quintal", "mandi": "Jaipur" },
+      { "crop": "Wheat", "price": "₹2200/quintal", "mandi": "Kota" },
+      { "crop": "Moong", "price": "₹6400/quintal", "mandi": "Jodhpur" },
+      { "crop": "Barley", "price": "₹1600/quintal", "mandi": "Ajmer" },
+      { "crop": "Mustard", "price": "₹5300/quintal", "mandi": "Alwar" }
+    ]
+  },
+  {
+    "state": "Gujarat",
+    "data": [
+      { "crop": "Groundnut", "price": "₹4600/quintal", "mandi": "Rajkot" },
+      { "crop": "Cotton", "price": "₹6500/quintal", "mandi": "Surat" },
+      { "crop": "Wheat", "price": "₹2100/quintal", "mandi": "Ahmedabad" },
+      { "crop": "Cumin", "price": "₹12000/quintal", "mandi": "Unjha" },
+      { "crop": "Rice", "price": "₹1850/quintal", "mandi": "Bhavnagar" }
+    ]
+  },
+  {
+    "state": "Karnataka",
+    "data": [
+      { "crop": "Ragi", "price": "₹3000/quintal", "mandi": "Tumkur" },
+      { "crop": "Areca Nut", "price": "₹28000/quintal", "mandi": "Shimoga" },
+      { "crop": "Rice", "price": "₹1900/quintal", "mandi": "Mysuru" },
+      { "crop": "Chili", "price": "₹7500/quintal", "mandi": "Byadgi" },
+      { "crop": "Maize", "price": "₹1700/quintal", "mandi": "Hubli" }
+    ]
+  },
+  {
+    "state": "West Bengal",
+    "data": [
+      { "crop": "Jute", "price": "₹4300/quintal", "mandi": "Kolkata" },
+      { "crop": "Rice", "price": "₹1800/quintal", "mandi": "Burdwan" },
+      { "crop": "Potato", "price": "₹1000/quintal", "mandi": "Hooghly" },
+      { "crop": "Banana", "price": "₹1600/quintal", "mandi": "Nadia" },
+      { "crop": "Wheat", "price": "₹2100/quintal", "mandi": "Malda" }
+    ]
+  },
+  {
+    "state": "Andhra Pradesh",
+    "data": [
+      { "crop": "Chili", "price": "₹8000/quintal", "mandi": "Guntur" },
+      { "crop": "Tobacco", "price": "₹15000/quintal", "mandi": "Prakasam" },
+      { "crop": "Rice", "price": "₹1900/quintal", "mandi": "East Godavari" },
+      { "crop": "Cotton", "price": "₹6200/quintal", "mandi": "Anantapur" },
+      { "crop": "Maize", "price": "₹1750/quintal", "mandi": "Vizianagaram" }
+    ]
   }
 ]

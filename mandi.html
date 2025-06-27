@@ -3,75 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <title>Mandi Prices – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f1f8e9;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4fff4;
       margin: 0;
-      padding: 2rem;
+      padding: 0;
     }
 
-    h2 {
+    header {
+      background-color: #4caf50;
+      color: white;
+      padding: 1rem;
       text-align: center;
-      color: #2e7d32;
+      font-size: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    .mandi-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
+    .back-btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 16px;
+      margin: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .mandi-section {
+      padding: 1rem 2rem;
+    }
+
+    .state-heading {
+      font-size: 1.4rem;
+      color: #2e7d32;
       margin-top: 2rem;
+      border-bottom: 2px solid #4caf50;
+      padding-bottom: 5px;
     }
 
-    .mandi-card {
-      background-color: #ffffff;
-      border-left: 6px solid #4caf50;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-      width: 280px;
+    table {
+      width: 100%;
+      margin-top: 1rem;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    .mandi-card h3 {
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #a5d6a7;
       color: #2e7d32;
-      margin-bottom: 0.5rem;
     }
 
-    .mandi-card p {
-      margin: 0.3rem 0;
-      font-size: 0.95rem;
+    tr:hover {
+      background-color: #e8f5e9;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.2rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h2>📈 Real-Time Mandi Prices</h2>
-  <div class="mandi-container" id="mandiContainer">Loading prices...</div>
+    <header>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+      <option value="mr">मराठी</option>
+      <option value="bn">বাংলা</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ur">اردو</option>
+    </select>
+    <h1 id="pageTitle">📈 Mandi Bhav</h1>
+    <small id="tagline">Real-time Mandi prices from all over the country</small>
+  </header>
+
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+
+  <div class="mandi-section" id="mandiContainer">
+    <p class="no-data">Loading latest mandi prices...</p>
+  </div>
 
   <script>
-    fetch("http://localhost:3000/api/mandi-prices") // 🔁 Replace with your deployed URL if hosted
-      .then(response => response.json())
+    fetch("http://localhost:3000/mandi") // replace with deployed URL if needed
+      .then(res => res.json())
       .then(data => {
         const container = document.getElementById("mandiContainer");
         container.innerHTML = "";
 
-        data.forEach(item => {
-          const card = document.createElement("div");
-          card.className = "mandi-card";
+        data.forEach(state => {
+          const section = document.createElement("div");
 
-          card.innerHTML = `
-            <h3>${item.crop}</h3>
-            <p><strong>🛒 Mandi:</strong> ${item.mandi}</p>
-            <p><strong>💰 Price:</strong> ${item.price}</p>
-            <p><strong>📅 Date:</strong> ${item.date}</p>
+          const heading = document.createElement("h3");
+          heading.className = "state-heading";
+          heading.textContent = state.state;
+
+          const table = document.createElement("table");
+          table.innerHTML = `
+            <thead>
+              <tr>
+                <th>Crop</th>
+                <th>Mandi</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${state.data.map(entry => `
+                <tr>
+                  <td>${entry.crop}</td>
+                  <td>${entry.mandi}</td>
+                  <td>${entry.price}</td>
+                </tr>
+              `).join('')}
+            </tbody>
           `;
 
-          container.appendChild(card);
+          section.appendChild(heading);
+          section.appendChild(table);
+          container.appendChild(section);
         });
       })
-      .catch(error => {
-        document.getElementById("mandiContainer").innerHTML = "<p>⚠️ Failed to load mandi data.</p>";
-        console.error("Mandi API error:", error);
+      .catch(err => {
+        document.getElementById("mandiContainer").innerHTML = "<p class='no-data'>Failed to load data.</p>";
+        console.error("Error fetching mandi data:", err);
       });
   </script>
 </body>
