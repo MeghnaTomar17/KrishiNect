@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Community Forum – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f1f8e9;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e7d32;
+    }
+
+    .forum-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .post-form {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .post-form textarea, .post-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .post-form button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .forum-post {
+      background-color: #ffffff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #4caf50;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .forum-post h3 {
+      margin-top: 0;
+    }
+
+    .forum-post .meta {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .back-btn {
+      margin-bottom: 1rem;
+      display: inline-block;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">← Back to Dashboard</a>
+  <h1>💬 Community Forum</h1>
+
+  <div class="forum-container">
+    <!-- ✅ Post Form -->
+    <form class="post-form" id="postForm">
+      <input type="text" id="author" placeholder="Your Name" required />
+      <textarea id="message" placeholder="Write your issue or discussion topic..." rows="4" required></textarea>
+      <button type="submit">Post</button>
+    </form>
+
+    <!-- ✅ Display Area -->
+    <div id="forumPosts"></div>
+  </div>
+
+  <!-- ✅ Firebase & Script -->
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, getDocs, query,
+    orderBy, serverTimestamp, doc, onSnapshot
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+ const firebaseConfig = {
+  apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+  authDomain: "krishinect-39b8e.firebaseapp.com",
+  projectId: "krishinect-39b8e",
+  storageBucket: "krishinect-39b8e.firebasestorage.app",
+  messagingSenderId: "894539525913",
+  appId: "1:894539525913:web:1100591bbfc25c7148df88"
+};
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const form = document.getElementById("postForm");
+  const postsContainer = document.getElementById("forumPosts");
+
+  // 🌿 Load posts
+  async function loadPosts() {
+    postsContainer.innerHTML = "";
+    const q = query(collection(db, "forumPosts"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach(async (docSnap) => {
+      const data = docSnap.data();
+      const postId = docSnap.id;
+
+      const div = document.createElement("div");
+      div.className = "forum-post";
+      div.innerHTML = `
+        <h3>${data.author}</h3>
+        <p>${data.message}</p>
+        <div class="meta">Posted on: ${data.createdAt?.toDate().toLocaleString() || 'Just now'}</div>
+        <div class="reply-box">
+          <input type="text" id="reply-${postId}" placeholder="Reply to this post..." />
+          <button onclick="addReply('${postId}')">Reply</button>
+        </div>
+        <div class="replies" id="replies-${postId}">Loading replies...</div>
+      `;
+      postsContainer.appendChild(div);
+
+      loadReplies(postId);
+    });
+  }
+
+  // 📝 Add new post
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const author = document.getElementById("author").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (author && message) {
+      await addDoc(collection(db, "forumPosts"), {
+        author,
+        message,
+        createdAt: serverTimestamp()
+      });
+      form.reset();
+      loadPosts();
+    }
+  });
+
+  // 💬 Add reply function (attached to window for onclick)
+  window.addReply = async function (postId) {
+    const input = document.getElementById(`reply-${postId}`);
+    const replyText = input.value.trim();
+
+    if (replyText) {
+      await addDoc(collection(db, "forumPosts", postId, "replies"), {
+        text: replyText,
+        createdAt: serverTimestamp()
+      });
+      input.value = "";
+    }
+  };
+
+  // 📥 Load replies for a post
+  async function loadReplies(postId) {
+    const repliesDiv = document.getElementById(`replies-${postId}`);
+    repliesDiv.innerHTML = "";
+
+    const q = query(collection(db, "forumPosts", postId, "replies"), orderBy("createdAt", "asc"));
+    onSnapshot(q, (snapshot) => {
+      repliesDiv.innerHTML = "";
+      if (snapshot.empty) {
+        repliesDiv.innerHTML = "<p style='color: #777;'>No replies yet.</p>";
+        return;
+      }
+
+      snapshot.forEach((replyDoc) => {
+        const replyData = replyDoc.data();
+        const replyEl = document.createElement("div");
+        replyEl.style = "margin-top: 5px; padding-left: 10px; border-left: 2px solid #ccc;";
+        replyEl.innerHTML = `
+          <p style="margin: 4px 0;">💬 ${replyData.text} 
+          <small style="color:#888">(${replyData.createdAt?.toDate().toLocaleString() || "Just now"})</small></p>
+        `;
+        repliesDiv.appendChild(replyEl);
+      });
+    });
+  }
+
+  // 🚀 Initial Load
+  loadPosts();
+</script>
+
+
+</body>
+</html>

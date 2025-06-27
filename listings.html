@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Listings – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .listings-section h2 {
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #2e7d32;
+  border-bottom: 1px solid #ccc;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+      <option value="mr">मराठी</option>
+      <option value="bn">বাংলা</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ur">اردو</option>
+    </select>
+    <h1 id="pageTitle">📋 Crop Listings</h1>
+    <small id="tagline">Har Kisan Ka Digital Saathi</small>
+  </header>
+
+  <main>
+    <button onclick="window.location.href='index.html'" class="back-btn">← Back to Home</button>
+      <section class="listings-section">
+  <h2>🧺 My Listings</h2>
+  <div id="myListingsContainer"></div>
+
+  <h2>🌾 Other Farmers' Listings</h2>
+  <div id="otherListingsContainer"></div>
+</section>
+
+
+  </main>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getAuth,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    deleteDoc,
+    doc,
+    query,
+    where,
+    addDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // ✅ Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+    authDomain: "krishinect-39b8e.firebaseapp.com",
+    projectId: "krishinect-39b8e",
+    storageBucket: "krishinect-39b8e.appspot.com",
+    messagingSenderId: "894539525913",
+    appId: "1:894539525913:web:1100591bbfc25c7148df88"
+  };
+
+  // ✅ Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  let currentUser;
+
+  // ✅ Auth check
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      alert("Please log in.");
+      window.location.href = "signin.html";
+    } else {
+      currentUser = user;
+      loadListings();
+    }
+  });
+
+  // ✅ Load listings
+  async function loadListings() {
+    const querySnapshot = await getDocs(collection(db, "listings"));
+    const myContainer = document.getElementById("myListingsContainer");
+    const othersContainer = document.getElementById("otherListingsContainer");
+
+    myContainer.innerHTML = "";
+    othersContainer.innerHTML = "";
+
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      const div = document.createElement("div");
+      div.className = "listing";
+
+      const dateStr = data.date ? new Date(data.date).toLocaleDateString() : "N/A";
+
+      div.innerHTML = `
+        <strong>🌾 Crop:</strong> ${data.cropName}<br>
+        <strong>📦 Quantity:</strong> ${data.quantity} kg<br>
+        <strong>📍 Location:</strong> ${data.location}<br>
+        <strong>📞 Contact:</strong> ${data.contact}<br>
+        <strong>🗓 Posted:</strong> ${dateStr}<br>
+        ${data.userId !== currentUser.uid ? `
+          <button class="request-btn" onclick="sendRequest('${docSnap.id}', '${data.userId}')">📩 Request to Buy</button>
+        ` : `<em style="color:green;">Your Listing</em>`}
+      `;
+
+      if (data.userId === currentUser.uid) {
+        // Add delete button for own listings
+        const delBtn = document.createElement("button");
+        delBtn.className = "delete-btn";
+        delBtn.textContent = "🗑 Delete";
+        delBtn.onclick = async () => {
+          const confirmDel = confirm("Are you sure you want to delete?");
+          if (confirmDel) {
+            await deleteDoc(doc(db, "listings", docSnap.id));
+            loadListings();
+          }
+        };
+        div.appendChild(delBtn);
+        myContainer.appendChild(div);
+      } else {
+        othersContainer.appendChild(div);
+      }
+    });
+  }
+
+  // ✅ Send Buy Request
+  window.sendRequest = async function (listingId, sellerId) {
+    if (!currentUser) {
+      alert("Please log in first.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "requests"), {
+        listingId,
+        buyerId: currentUser.uid,
+        sellerId,
+        status: "pending",
+        createdAt: new Date().toISOString()
+      });
+
+      alert("✅ Purchase request sent to the seller!");
+    } catch (error) {
+      console.error("Error sending request:", error);
+      alert("❌ Failed to send request.");
+    }
+  };
+</script>
+
+</body>
+</html>

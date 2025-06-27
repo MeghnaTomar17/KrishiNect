@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Crop Requests – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0fff0;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .container {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+      margin-top: 1rem;
+    }
+
+    .listing {
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 12px;
+      border-left: 6px solid #4caf50;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      min-width: 260px;
+      max-width: 300px;
+    }
+
+    .action-buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 10px;
+    }
+
+    .accept-btn, .reject-btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .accept-btn {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .reject-btn {
+      background-color: #d32f2f;
+      color: white;
+    }
+
+    .accept-btn:hover {
+      background-color: #388e3c;
+    }
+
+    .reject-btn:hover {
+      background-color: #b71c1c;
+    }
+
+    .back-btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Dashboard</button>
+  <h2>📬 Requests to Buy Your Crops</h2>
+  <div id="requestContainer" class="container"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      where,
+      getDocs,
+      getDoc,
+      updateDoc,
+      doc
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+      authDomain: "krishinect-39b8e.firebaseapp.com",
+      projectId: "krishinect-39b8e",
+      storageBucket: "krishinect-39b8e.appspot.com",
+      messagingSenderId: "894539525913",
+      appId: "1:894539525913:web:1100591bbfc25c7148df88"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    let currentUser;
+
+    const container = document.getElementById("requestContainer");
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "signin.html";
+        return;
+      }
+      currentUser = user;
+      loadRequests();
+    });
+
+    async function loadRequests() {
+      const q = query(collection(db, "requests"), where("sellerId", "==", currentUser.uid));
+      const snapshot = await getDocs(q);
+
+      if (snapshot.empty) {
+        container.innerHTML = "<p>No requests yet.</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+      for (let docSnap of snapshot.docs) {
+        const data = docSnap.data();
+        const listingRef = doc(db, "listings", data.listingId);
+        const listingSnap = await getDoc(listingRef);
+        const listingData = listingSnap.exists() ? listingSnap.data() : {};
+
+        const div = document.createElement("div");
+        div.className = "listing";
+        div.innerHTML = `
+          <strong>📦 Requested Crop:</strong> ${listingData.cropName || "N/A"}<br>
+          <strong>👤 Buyer ID:</strong> <span class="buyer-id">${data.buyerId}</span><br>
+          <strong>🗓 Requested:</strong> ${new Date(data.createdAt).toLocaleString()}<br>
+          <strong>📌 Status:</strong> <span class="status-text">${data.status}</span><br>
+          ${data.status === "pending" ? `
+            <div class="action-buttons">
+              <button class="accept-btn" onclick="updateRequestStatus('${docSnap.id}', 'accepted')">✅ Accept</button>
+              <button class="reject-btn" onclick="updateRequestStatus('${docSnap.id}', 'rejected')">❌ Reject</button>
+            </div>
+          ` : ''}
+        `;
+        container.appendChild(div);
+      }
+    }
+
+    window.updateRequestStatus = async function (requestId, status) {
+      try {
+        const requestRef = doc(db, "requests", requestId);
+        await updateDoc(requestRef, { status });
+
+        alert(`Request ${status === "accepted" ? "accepted" : "rejected"} successfully.`);
+        loadRequests();
+      } catch (error) {
+        console.error("Error updating status:", error);
+        alert("❌ Failed to update status.");
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KrishiNect | Welcome</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #4caf50;
+      padding: 0.8rem 1.5rem;
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .nav-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    #langSelector {
+      padding: 6px 8px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+    }
+
+    /* Hero */
+    .home-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #c8e6c9, #a5d6a7);
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .home-title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-bottom: 0.5rem;
+    }
+
+    .home-subtitle {
+      font-size: 1.3rem;
+      color: #4caf50;
+      margin-bottom: 2rem;
+    }
+
+    .home-btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 24px;
+      margin: 1rem 0.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      min-width: 150px;
+      transition: background 0.3s ease;
+    }
+
+    .home-btn:hover {
+      background-color: #388e3c;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Full Screen Sections */
+    section {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #f1f8e9;
+    }
+
+    section:nth-of-type(even) {
+      background: #e8f5e9;
+    }
+
+    section h2 {
+      color: #2e7d32;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    section p {
+      max-width: 850px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      text-align: center;
+    }
+
+    /* Features - Placards */
+    .features-section {
+  padding: 4rem 2rem;
+  background-color: #f9fff9;
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.2rem;
+  color: #2e7d32;
+  margin-bottom: 2rem;
+}
+
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border-left: 6px solid #4caf50;
+  padding: 1.5rem;
+  width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  background-color: #e8f5e9;
+}
+
+.feature-card h3 {
+  color: #2e7d32;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+.contact-section {
+  padding: 4rem 2rem;
+  background-color: #f0fff0;
+  text-align: center;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.contact-info {
+  max-width: 400px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.contact-info p {
+  margin: 0.8rem 0;
+}
+
+.contact-info a {
+  color: #2e7d32;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a img {
+  width: 28px;
+  margin: 0 30px;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+}
+
+.contact-form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.contact-form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #388e3c;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+    /* Scroll Button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: #388e3c;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .home-title {
+        font-size: 2.2rem;
+      }
+
+      .home-subtitle {
+        font-size: 1rem;
+      }
+
+      .home-btn {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+ 
+</head>
+
+<body>
+  <!-- Navbar -->
+<nav>
+  <div class="nav-title">🌾 KrishiNect</div>
+  <div class="nav-links">
+    <a id="navAbout" onclick="scrollToSection('about')">About</a>
+<a id="navFeatures" onclick="scrollToSection('features')">Features</a>
+<a id="navContact" onclick="scrollToSection('contact')">Contact</a>
+    <select id="langSelector">
+  <option value="en">🌐 English</option>
+  <option value="hi">हिन्दी</option>
+  <option value="pa">ਪੰਜਾਬੀ</option>
+  <option value="mr">मराठी</option>
+  <option value="bn">বাংলা</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="gu">ગુજરાતી</option>
+  <option value="kn">ಕನ್ನಡ</option>
+  <option value="ur">اردو</option>
+</select>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="home-wrapper">
+  <div class="home-title" id="home-title">🌿 Welcome to KrishiNect</div>
+  <div class="home-subtitle" id="homeSubtitle">Har Kisan Ka Digital Saathi</div>
+  <div class="btn-group">
+    <button class="home-btn" id="btnSignIn" onclick="location.href='signin.html'">Sign In</button>
+    <button class="home-btn" id="btnSignUp" onclick="location.href='signup.html'">Sign Up</button>
+  </div>
+</div>
+
+
+  <!-- ✅ About -->
+  <section id="about">
+    <h2 id="journeyHeading">Our Journey</h2>
+    <div id="journeyContent">
+    <p>India’s agricultural roots run deep, but its farmers often face shallow access to the resources they deserve. KrishiNect began with a question — what if we could bridge the gap between grassroots needs and digital solutions, without overcomplicating things? During a rural field visit, our student team witnessed firsthand the challenges farmers face: from lack of real-time mandi pricing to no local platform for peer-to-peer crop exchange or relevant seasonal advice in regional languages.</p>
+    <p>Inspired and determined, we started working on KrishiNect — a lightweight, multilingual, farmer-first web platform. The idea was simple: bring essential crop-related services into a unified, easy-to-use tool accessible even in low-network rural areas. With user-friendly design, local language support, and offline features, KrishiNect isn’t just a project — it’s a digital companion for the Indian kisan.</p>
+    <p>As we built and tested the platform, we ensured it remained rooted in actual farmer feedback. From designing crop listing workflows to choosing which advisories to show, we consulted smallholder farmers, agriculture officers, and local cooperatives. This journey wasn’t just about technology — it was about empathy, collaboration, and solving real problems with purpose.</p>
+    <p>What started as a hackathon MVP has now evolved into a scalable vision. KrishiNect aims to empower rural communities with the tools they need to grow better, trade smarter, and stay informed — all in their own language, at their own pace. Our journey has just begun, and we’re proud to walk it with every farmer who dreams of a better tomorrow.</p>
+    </div>
+  </section>
+
+  <!-- ✅ Features -->
+  <section id="features" class="features-section">
+  <h2 class="section-heading" id="featuresHeading">✨ Key Features of KrishiNect</h2>
+  <div class="feature-cards">
+    <div class="feature-card">
+      <h3 id="feature1Title">🧺 Local Crop Exchange</h3>
+      <p id="feature1Desc">Farmers can post and browse local produce listings to buy or sell directly within their area.</p>
+    </div>
+    <div class="feature-card">
+      <h3 id="feature2Title">📈 Real-Time Mandi Prices</h3>
+      <p id="feature2Desc">Get instant updates from nearby mandis to make better selling decisions and maximize earnings.</p>
+    </div>
+    <div class="feature-card">
+      <h3 id="feature3Title">📚 Crop Advisory</h3>
+      <p id="feature3Desc">Offline and multilingual seasonal tips, directly aligned with government schemes and advisories.</p>
+    </div>
+    <div class="feature-card">
+      <h3 id="feature4Title">🌐 Multilingual Support</h3>
+      <p id="feature4Desc">Accessible in 10+ Indian languages to ensure inclusivity and ease for every farmer.</p>
+    </div>
+    <div class="feature-card">
+      <h3 id="feature5Title">📱 Minimal UI</h3>
+      <p id="feature5Desc">Clean, easy-to-use interface built for rural accessibility and low-data usage environments.</p>
+    </div>
+    <div class="feature-card">
+      <h3 id="feature6Title">🔒 Personalized Dashboard</h3>
+      <p id="feature6Desc">Each farmer gets their own crop listings, history, and profile in a simple dashboard view.</p>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="contact" class="contact-section">
+  <h2 class="section-heading" id="contactHeading">📬 Contact Us</h2>
+  <p class="contact-intro" id="contactIntro">Have feedback, suggestions, or want to collaborate? We'd love to hear from you!</p>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <p><strong>📧 Email:</strong> <a href="mailto:support@krishinect.in">support@krishinect.in</a></p>
+      <p><strong>📞 Phone:</strong> +91-9876543210</p>
+      <p><strong>🌐 Follow Us:</strong></p>
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" /></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="LinkedIn" /></a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="feedbackForm">
+      <input type="text" id="userName" placeholder="Your Name" required />
+      <input type="email" id="userEmail" placeholder="Your Email" required />
+      <textarea id="userMessage" placeholder="Your Message..." rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- 🔝 Scroll Button -->
+  <button id="scrollTopBtn" onclick="scrollToTop()">⬆ Top</button>
+
+ <!-- Chatbot Button -->
+<div id="chatbotButton" onclick="toggleChatbot()">💬</div>
+
+<!-- Chatbot Box -->
+<div id="chatbotBox">
+  <div class="chat-header">KrishiBot 🤖</div>
+  <div id="chatFAQs"></div>
+  <div id="chatAnswer" style="padding: 1rem; color: #333;"></div>
+</div>
+
+
+
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+    authDomain: "krishinect-39b8e.firebaseapp.com",
+    projectId: "krishinect-39b8e",
+    storageBucket: "krishinect-39b8e.appspot.com",
+    messagingSenderId: "894539525913",
+    appId: "1:894539525913:web:1100591bbfc25c7148df88"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  document.getElementById("feedbackForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("userName").value.trim();
+    const email = document.getElementById("userEmail").value.trim();
+    const message = document.getElementById("userMessage").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "feedback"), {
+        name,
+        email,
+        message,
+        timestamp: new Date().toISOString()
+      });
+
+      alert("✅ Feedback submitted successfully!");
+      this.reset();
+    } catch (error) {
+      console.error("❌ Failed to submit feedback:", error);
+      alert("Failed to submit feedback.");
+    }
+  });
+</script>
+<script>
+
+
+  const translations = {
+    en: {
+      subtitle: "Har Kisan Ka Digital Saathi",
+      about: "About",
+      navfeatures: "Features",
+      contact: "Contact Us",
+      signIn: "Sign In",
+      signUp: "Sign Up",
+      journeyHeading: "Our Journey",
+    journeyContent: [
+      "India’s agricultural roots run deep, but its farmers often face shallow access to the resources they deserve. KrishiNect began with a question — what if we could bridge the gap between grassroots needs and digital solutions, without overcomplicating things? During a rural field visit, our student team witnessed firsthand the challenges farmers face: from lack of real-time mandi pricing to no local platform for peer-to-peer crop exchange or relevant seasonal advice in regional languages.",
+      "Inspired and determined, we started working on KrishiNect — a lightweight, multilingual, farmer-first web platform. The idea was simple: bring essential crop-related services into a unified, easy-to-use tool accessible even in low-network rural areas. With user-friendly design, local language support, and offline features, KrishiNect isn’t just a project — it’s a digital companion for the Indian kisan.",
+      "As we built and tested the platform, we ensured it remained rooted in actual farmer feedback. From designing crop listing workflows to choosing which advisories to show, we consulted smallholder farmers, agriculture officers, and local cooperatives. This journey wasn't just about technology — it was about empathy, collaboration, and solving real problems with purpose.",
+      "What started as a hackathon MVP has now evolved into a scalable vision. KrishiNect aims to empower rural communities with the tools they need to grow better, trade smarter, and stay informed — all in their own language, at their own pace. Our journey has just begun, and we are proud to walk it with every farmer who dreams of a better tomorrow."
+    ],
+    featuresHeading: "✨ Key Features of KrishiNect",
+    features: [
+      { title: "🧺 Local Crop Exchange", desc: "Farmers can post and browse local produce listings to buy or sell directly within their area." },
+      { title: "📈 Real-Time Mandi Prices", desc: "Get instant updates from nearby mandis to make better selling decisions and maximize earnings." },
+      { title: "📚 Crop Advisory", desc: "Offline and multilingual seasonal tips, directly aligned with government schemes and advisories." },
+      { title: "🌐 Multilingual Support", desc: "Accessible in 10+ Indian languages to ensure inclusivity and ease for every farmer." },
+      { title: "📱 Minimal UI", desc: "Clean, easy-to-use interface built for rural accessibility and low-data usage environments." },
+      { title: "🔒 Personalized Dashboard", desc: "Each farmer gets their own crop listings, history, and profile in a simple dashboard view." }
+    ],
+    contactHeading:"📬 Contact Us",
+    contactIntro:""
+    },
+    hi: {
+      subtitle: "हर किसान का डिजिटल साथी",
+      about: "परिचय",
+      navfeatures: "विशेषताएँ",
+      contact: "संपर्क करें",
+      signIn: "साइन इन करें",
+      signUp: "रजिस्टर करें",
+      journeyHeading: "हमारी यात्रा",
+    journeyContent: [
+      "भारत की कृषि जड़ें गहरी हैं, लेकिन हमारे किसान अक्सर उन्हीं संसाधनों से वंचित रहते हैं, जिनके वे हकदार हैं। KrishiNect की शुरुआत एक सवाल से हुई — अगर हम ग्रामीण जरूरतों और डिजिटल समाधानों के बीच की खाई को जटिल बनाए बिना पाट सकें तो? एक ग्रामीण फील्ड विजिट के दौरान, हमारी छात्र‑टीम ने किसानों की समस्याओं को बारीकी से देखा: रियल‑टाइम मंडी भाव न होना, किसान‑से‑किसान फसल एक्सचेंज का कोई प्लेटफ़ॉर्म न होना, और क्षेत्रीय भाषाओं में मौसमी सलाह की कमी।",
+      "प्रेरित होकर और दृढ़ निश्चय के साथ, हमने KrishiNect पर काम शुरू किया — एक हल्का‑फुल्का, बहुभाषी, किसान‑मुख्य वेब प्लेटफ़ॉर्म। विचार सरल था: ज़रूरी फसल‑संबंधित सेवाओं को एकीकृत, उपयोग में आसान उपकरण के रूप में पेश किया जाए जो कम नेटवर्क वाले ग्रामीण इलाकों में भी काम करे। यूज़र‑फ्रेंडली डिज़ाइन, स्थानीय भाषा समर्थन और ऑफ़लाइन फीचर्स के साथ, KrishiNect सिर्फ एक प्रोजेक्ट नहीं है — यह भारतीय किसान का डिजिटल साथी है।",
+      "जब हमने प्लेटफ़ॉर्म को तैयार और परीक्षण किया, तो हमने इसे वास्तविक किसान प्रतिक्रियाओं पर आधारित रखा। फसल लिस्टिंग वर्कफ़्लो डिज़ाइन करने से लेकर दिखाए जाने वाले परामर्श चुनने तक, हमने छोटे किसानों, कृषि अधिकारियों और स्थानीय सहकारितों से सलाह ली। यह यात्रा सिर्फ तकनीक की नहीं थी — यह सहानुभूति, सहयोग और उद्देश्यपूर्ण समस्या समाधान की थी।",
+      "एक हैकथॉन MVP के रूप में शुरू हुआ यह विचार अब एक स्केलेबल विज़न बन गया है। KrishiNect ग्रामीण समुदायों को बेहतर उगाने, चतुराई से व्यापार करने और सूचित रहने के लिए उपकरण उपलब्ध कराना चाहता है — वह भी उनकी अपनी भाषा में, उनकी अपनी गति से। हमारी यात्रा अभी शुरू हुई है, और हम हर उस किसान के साथ चलने पर गर्व महसूस करते हैं जो बेहतर कल का सपना देखता है।"
+    ],
+    featuresHeading: "✨ कृषिनेक्ट की प्रमुख विशेषताएं",
+    features: [
+      { title: "🧺 स्थानीय फसल विनिमय", desc: "किसान अपनी उपज जोड़ सकते हैं और स्थानीय स्तर पर खरीद-बिक्री कर सकते हैं।" },
+      { title: "📈 रीयल-टाइम मंडी भाव", desc: "नजदीकी मंडियों से ताज़ा दाम जानें और बेहतर निर्णय लें।" },
+      { title: "📚 फसल सलाह", desc: "सरकारी योजनाओं के अनुरूप, ऑफलाइन और बहुभाषीय मौसमी सुझाव।" },
+      { title: "🌐 बहुभाषीय समर्थन", desc: "10+ भाषाओं में उपलब्ध, ताकि हर किसान के लिए सुलभ हो।" },
+      { title: "📱 सरल इंटरफेस", desc: "कम डेटा खपत और ग्रामीण उपयोगकर्ताओं के लिए आसान डिजाइन।" },
+      { title: "🔒 व्यक्तिगत डैशबोर्ड", desc: "हर किसान के लिए अलग डैशबोर्ड जिसमें उनकी लिस्टिंग और जानकारी शामिल है।" }
+    ],
+    contactHeading:"📬 हमसे संपर्क करें",
+    contactIntro:"आपके सुझाव, प्रतिक्रिया या सहयोग का स्वागत है! हम आपकी बात सुनना चाहेंगे।"
+    },
+    pa: {
+      subtitle: "ਹਰ ਕਿਸਾਨ ਦਾ ਡਿਜੀਟਲ ਸਾਥੀ",
+      about: "ਬਾਰੇ",
+      navfeatures: "ਖਾਸੀਅਤਾਂ",
+      contact: "ਸੰਪਰਕ ਕਰੋ",
+      signIn: "ਸਾਈਨ ਇਨ ਕਰੋ",
+      signUp: "ਰਜਿਸਟਰ ਕਰੋ",
+      journeyHeading: "ਸਾਡੀ ਯਾਤਰਾ",
+    journeyContent: [
+      "ਭਾਰਤ ਦੀ ਖੇਤੀਬਾੜੀ ਦੀਆਂ ਜੜਾਂ ਘਾਹੀਆਂ ਹਨ, ਪਰ ਸਾਡੇ ਕਿਸਾਨ ਅਕਸਰ ਉਹਨਾਂ ਸਰੋਤਾਂ ਤੱਕ ਪਹੁੰਚ ਤੋਂ ਦੂਰ ਰਹਿੰਦੇ ਹਨ, ਜਿਨ੍ਹਾਂ ਦੇ ਉਹ ਹੱਕਦਾਰ ਹਨ। KrishiNect ਦੀ ਸ਼ੁਰੂਆਤ ਇੱਕ ਸਵਾਲ ਨਾਲ ਹੋਈ—ਜੇ ਅਸੀਂ ਜਮੀਨੀ ਲੋੜੀਂ ਅਤੇ ਡਿਜੀਟਲ ਹੱਲਾਂ ਦਰਮਿਆਨ ਦੀ ਖਾਈ ਨੂੰ ਬਿਨਾਂ ਜਟਿਲਤਾ ਰਾਹੀਂ ਪਾਰ ਕਰ ਸਕੀਏ ਤਾਂ? ਇੱਕ ਪੇਂਡੂ ਫੀਲਡ ਵਿਜ਼ਟ ਦੌਰਾਨ, ਸਾਡੀ ਵਿਦਿਆਰਥੀ ਟੀਮ ਨੇ ਖੇਤੀਬਾੜੀ ਦੀਆਂ ਮੁਸ਼ਕਲਾਂ ਨੂੰ ਮੁੱਖ ਮੋਹੜੇ 'ਤੇ ਦੇਖਿਆ: ਰੀਅਲ-ਟਾਈਮ ਮੰਡੀ ਭਏ ਨਹੀਂ, ਕਿਸਾਨ-ਤੋਂ-ਕਿਸਾਨ ਫਸਲ ਬਦਲ ਦਾ ਕੋਈ ਪਲੇਟਫਾਰਮ ਨਹੀਂ, ਅਤੇ ਖੇਤੀਆਂ ਦੇ ਮੌਸਮੀ ਸਲਾਹ ਵਿੱਚ ਭਾਸ਼ਾਈ ਘਾਟਾਂ।",
+      "ਪ੍ਰੇਰਿਤ ਹੋ ਕੇ ਅਤੇ ਅਟੱਲ ਨਿਸ਼ਚੇ ਨਾਲ, ਅਸੀਂ KrishiNect ਉੱਤੇ ਕੰਮ ਕਰਨਾ ਸ਼ੁਰੂ ਕੀਤਾ—ਇੱਕ ਹਲਕਾ, ਬਹੁਭਾਸ਼ੀ, ਕਿਸਾਨ-ਪਹਿਲਾ ਵੈੱਬ ਪਲੇਟਫਾਰਮ। ਵਿਚਾਰ ਸਧਾਰਨ ਸੀ: ਲੋੜੀਂਦੇ ਫਸਲ ਸੰਬੰਧੀ ਸੇਵਾਵਾਂ ਨੂੰ ਇੱਕ ਇੱਕਲਤ, ਆਸਾਨ-ਉਪਯੋਗ ਟੂਲ ਵਿੱਚ ਲਿਆਉਣਾ ਜੋ ਘੱਟ-ਨੈੱਟਵਰਕ ਵਾਲੇ ਪੇਂਡੂ ਇਲਾਕਿਆਂ ਵਿੱਚ ਵੀ ਚੱਲ ਸਕੇ। ਯੂਜ਼ਰ-ਫ੍ਰੈਂਡਲੀ ਡਿਜ਼ਾਈਨ, ਸਥਾਨਕ ਭਾਸ਼ਾ ਸਹਾਇਤਾ ਅਤੇ ਆਫਲਾਈਨ ਫੀਚਰਾਂ ਨਾਲ, KrishiNect صرف ਇੱਕ ਪ੍ਰੋਜੈਕਟ ਹੀ ਨਹੀਂ—ਇਹ ਭਾਰਤੀ ਕਿਸਾਨ ਲਈ ਇੱਕ ਡਿਜੀਟਲ ਸਾਥੀ ਹੈ।",
+      "ਜਦੋਂ ਅਸੀਂ ਪਲੇਟਫਾਰਮ ਨੂੰ ਬਣਾਇਆ ਅਤੇ ਟੈਸਟ ਕੀਤਾ, ਤਾਂ ਅਸੀਂ ਇਸਨੂੰ ਅਸਲ ਕਿਸਾਨੀ ਫੀਡਬੈਕ 'ਤੇ ਅਧਾਰਿਤ ਰੱਖਿਆ। ਫਸਲ ਲਿਸਟਿੰਗ ਵਰਕਫ਼ਲੋਜ਼ ਤਿਆਰ ਕਰਨ ਤੋਂ ਸੁਝਾਵ ਚੁਣਨ ਤੱਕ, ਅਸੀਂ ਛੋਟੇ ਕਿਸਾਨਾਂ, ਖੇਤੀਬਾੜੀ ਅਧਿਕਾਰੀਆਂ ਅਤੇ ਸਥਾਨਕ ਸਹਿਕਾਰੀ ਸੰਸਥਾਵਾਂ ਤੋਂ ਮਸ਼ਵਰਾ ਲਿਆ। ਇਹ ਯਾਤਰਾ ਸਿਰਫ਼ ਟੈਕਨੋਲੋਜੀ ਨਹੀਂ ਸੀ—ਇਹ ਅਨੁਭੂਤੀ, ਸਹਿਯੋਗ ਅਤੇ ਉਦੇਸ਼ਪੂਰਨ ਸਮੱਸਿਆ ਹੱਲ ਕਰਨ ਦੀ ਸੀ।",
+      "ਇੱਕ ਹੈਕਥਾਨ MVP ਵਜੋਂ ਸ਼ੁਰੂ ਹੋਇਆ ਇਹ ਵਿਚਾਰ ਹੁਣ ਇੱਕ ਸਕੇਲਬਲ ਵਿਜ਼ਨ ਵਿੱਚ ਬਦਲ ਚੁੱਕਾ ਹੈ। KrishiNect ਪੇਂਡੂ ਭਾਈਚਾਰਿਆਂ ਨੂੰ ਬਿਹਤਰ ਨਾਲ ਖੇਤੀ ਕਰਨ, ਸਮਾਰਟ ਵਪਾਰ ਕਰਨ ਅਤੇ ਸੁਚਿੱਤ ਰਹਿਣ ਲਈ ਸੰਦ ਮੁਹੱਈਆ ਕਰਵਾਉਣਾ ਚਾਹੁੰਦਾ ਹੈ—ਉਹ ਵੀ ਉਹਨਾਂ ਦੀ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ, ਉਹਨਾਂ ਦੀ ਸੀਰੀ 'ਤੇ। ਸਾਡੀ ਯਾਤਰਾ ਸਿਰਫ ਸ਼ੁਰੂ ਹੋਈ ਹੈ, ਅਤੇ ਅਸੀਂ ਹਰ ਉਹ ਕਿਸਾਨ ਦੇ ਨਾਲ ਇਸ 'ਤੇ ਚੱਲਣ 'ਤੇ ਗਰਵ ਮਹਿਸੂਸ ਕਰਦੇ ਹਾਂ ਜੋ ਇੱਕ ਬਿਹਤਰ ਕੱਲ ਦਾ ਸੁਪਨਾ ਦੇਖਦਾ ਹੈ।"
+    ],
+     featuresHeading:"✨ ਕ੍ਰਿਸ਼ੀਨੇਕਟ ਦੀਆਂ ਮੁੱਖ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ",
+    features: [
+  { title: "🧺 ਲੋਕਲ ਫਸਲ ਐਕਸਚੇਂਜ", desc: "ਕਿਸਾਨ ਆਪਣੇ ਇਲਾਕੇ ਵਿਚ ਫਸਲ ਵੇਚਣ ਜਾਂ ਖਰੀਦਣ ਲਈ ਲਿਸਟਿੰਗ ਕਰ ਸਕਦੇ ਹਨ।" },
+  { title: "📈 ਰੀਅਲ-ਟਾਈਮ ਮੰਡੀ ਕੀਮਤਾਂ", desc: "ਨੇੜਲੇ ਮੰਡੀਆਂ ਤੋਂ ਤਾਜ਼ਾ ਕੀਮਤਾਂ ਦੀ ਜਾਣਕਾਰੀ ਲਵੋ।" },
+  { title: "📚 ਫਸਲ ਸਲਾਹ", desc: "ਸਰਕਾਰੀ ਸਕੀਮਾਂ ਅਨੁਸਾਰ ਬਹੁਭਾਸ਼ਾਈ ਅਤੇ ਆਫਲਾਈਨ ਸਲਾਹ।" },
+  { title: "🌐 ਬਹੁਭਾਸ਼ੀ ਸਹਿਯੋਗ", desc: "10 ਤੋਂ ਵੱਧ ਭਾਸ਼ਾਵਾਂ ਵਿੱਚ ਉਪਲਬਧ।" },
+  { title: "📱 ਸਧਾਰਣ ਇੰਟਰਫੇਸ", desc: "ਸੌਖੀ, ਘੱਟ ਡੇਟਾ ਵਰਤਣ ਵਾਲੀ ਡਿਜ਼ਾਈਨ।" },
+  { title: "🔒 ਨਿੱਜੀ ਡੈਸ਼ਬੋਰਡ", desc: "ਹਰ ਕਿਸਾਨ ਲਈ ਆਪਣਾ ਖਾਤਾ ਤੇ ਇਤਿਹਾਸ।" }
+],
+contactHeading:"📬 ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ",
+contactIntro:"ਤੁਹਾਡੇ ਸੁਝਾਅ, ਫੀਡਬੈਕ ਜਾਂ ਸਹਿਯੋਗ ਦਾ ਸਵਾਗਤ ਹੈ! ਅਸੀਂ ਤੁਹਾਡੀ ਗੱਲ ਸੁਣਨਾ ਚਾਹੁੰਦੇ ਹਾਂ।"
+
+    },
+    mr: {
+      subtitle: "प्रत्येक शेतकऱ्याचा डिजिटल साथी",
+      about: "आमच्याबद्दल",
+      navfeatures: "वैशिष्ट्ये",
+      contact: "आमच्याशी संपर्क साधा",
+      signIn: "साइन इन",
+      signUp: "साइन अप",
+      journeyHeading: "आपली यात्रा",
+    journeyContent: [
+      "भारताची कृषी पारंपारिक मुळांमध्ये खोल आहे, तरी आपले शेतकरी नेहमीच ज्या स्रोतांचे हकदार आहेत, त्या स्रोतांपासून दूर असतात. KrishiNect ची सुरुवात एका प्रश्नातून झाली—जोपर्यंत आपण पायाभूत गरजा आणि डिजिटल उपायांमधला तफावत सुलभपणे दूर करू शकत नाही, तोपर्यंत काय? ग्रामीण फील्ड भेटीदरम्यान, आमच्या विद्यार्थी टीमने शेतकऱ्यांच्या समस्यांना प्रत्यक्षात पाहिले: वेळेवर मंडी भाव न मिळणे, कृषकांमध्ये पीयर-टू-पीयर फसल एक्सचेंजचे अवकाश न असणे, आणि प्रादेशिक भाषांमध्ये मौसमी मार्गदर्शनाची कमतरता.",
+      "प्रेरित आणि दृढ निर्धाराने, आम्ही KrishiNect वर काम करण्यास सुरुवात केली—एक हलके-फुलके, बहुभाषिक, शेतकरी-केंद्रित वेब प्लॅटफॉर्म. कल्पना साधी होती: आवश्यक पिक-संबंधित सेवा एकत्र आणणे, ज्याचा वापर कमी नेटवर्क असलेल्या ग्रामीण भागांतही सहज करता येईल. वापरकर्ता-मित्रत्वाने डिझाइन, स्थानिक भाषा समर्थन आणि ऑफलाइन वैशिष्ट्यांसह, KrishiNect फक्त एक प्रकल्प नाही—तो भारतीय शेतकऱ्याचा डिजिटल साथी आहे.",
+      "आम्ही प्लॅटफॉर्म तयार आणि चाचणी करताना, ते वास्तविक शेतकरी अभिप्रायावर आधारित ठेवले. पिक सूची वर्कफ्लो डिझाइन करण्यापासून मार्गदर्शन निवडण्यापर्यंत, आम्ही लहान शेतकरी, कृषी अधिकारी आणि स्थानिक सहकारी संस्थांशी सल्ला केला. ही यात्रा फक्त तंत्रज्ञानाची नव्हे—ती सहानुभूती, सहकार्य आणि अर्थपूर्ण समस्या सोडवण्याची आहे.",
+      " हैकथॉन MVP म्हणून सुरू झालेले हे आता एका स्केलेबल दृष्टीकोनात रूपांतरित झाले आहे. KrishiNect ग्रामीण समुदायांना उत्तम उत्पन्न, सूक्ष्म व्यापारी तंत्र, आणि माहिती मिळविण्यासाठी साधन पुरवू इच्छिते—तेही त्यांच्या स्वतःच्या भाषेत आणि गतीने. आम्ही इथून सुरुवात करत आहोत आणि प्रत्येक शेतकऱ्याबरोबर हा प्रवास आम्हाला फخر वाटतो, जो एक चांगल्या उद्याचा स्वप्न पाहतो."
+    ],
+     featuresHeading:"✨ कृषिनेक्टची मुख्य वैशिष्ट्ये",
+    features: [
+  { title: "🧺 स्थानिक पीक देवाणघेवाण", desc: "शेतकरी स्थानिक पातळीवर पिकांची खरेदी-विक्री करू शकतात." },
+  { title: "📈 ताज्या बाजारभाव", desc: "जवळच्या बाजारातील दर त्वरित मिळवा." },
+  { title: "📚 पीक सल्ला", desc: "सरकारी योजना आणि हंगामी मार्गदर्शन." },
+  { title: "🌐 बहुभाषिक समर्थन", desc: "१०+ भारतीय भाषांमध्ये उपलब्ध." },
+  { title: "📱 सोपी रचना", desc: "ग्रामीण भागासाठी सुलभ आणि कमी डेटा वापर." },
+  { title: "🔒 वैयक्तिक डॅशबोर्ड", desc: "प्रत्येक शेतकऱ्याचा स्वतःचा डेटा आणि लिस्टिंग." }
+],
+contactHeading:"📬 आमच्याशी संपर्क साधा",
+contactIntro:"आपल्या अभिप्राय, सूचना किंवा सहकार्याचे स्वागत आहे! आम्हाला तुमचं ऐकायला आवडेल."
+
+    },
+    bn: {
+      subtitle: "প্রত্যেক কৃষকের ডিজিটাল সাথি",
+      about: "আমাদের সম্পর্কে",
+      navfeatures: "বৈশিষ্ট্যাবলী",
+      contact: "যোগাযোগ করুন",
+      signIn: "সাইন ইন",
+      signUp: "নিবন্ধন",
+      journeyHeading: "আমাদের যাত্রা",
+    journeyContent: [
+      "ভারতের কৃষি ঐতিহ্য গভীর, কিন্তু আমাদের কৃষকেরা প্রায়ই তাদের প্রাপ্য উৎস থেকে বঞ্চিত হয়। KrishiNect সূচনা পেয়েছিল একটি প্রশ্ন থেকে—কী হবে যদি আমরা গ্রামীণ দাবিদারাদের এবং ডিজিটাল সমাধানের মধ্যে ফাঁক পূরণ করতে পারি, তবে তা জটিল না করে? এক গ্রামীণ মাঠ পরিদর্শনে, আমাদের ছাত্র দল প্রত্যক্ষ করেছিল কৃষকদের সমস্যাগুলি: রিয়েল-টাইম মন্ডি দামের অভাব, কৃষক-টু-কৃষক ফসল বিনিময়ের কোন প্ল্যাটফর্ম না থাকা, এবং প্রাদেশিক ভাষায় মৌসুমী পরামর্শের ঘাটতি।",
+      "অনুপ্রাণিত ও দৃঢ় প্রতিজ্ঞার সাথে, আমরা KrishiNect তৈরি শুরু করলাম—একটি হালকা, বহু-ভাষাভিত্তিক, কৃষক-প্রথম ওয়েব প্ল্যাটফর্ম। ধারণা সহজ: প্রয়োজনীয় ফসল-সংক্রান্ত সেবাকে একত্রে আনা, যা কম-নেটওয়ার্ক গ্রামীণ এলাকায়ও ব্যবহার-যোগ্য। ব্যবহারকারী-বান্ধব ডিজাইন, স্থানীয় ভাষা সমর্থন, এবং অফলাইন ফিচার সহ, KrishiNect শুধুমাত্র একটি প্রকল্প নয়—এটি ভারতীয় কৃষকদের ডিজিটাল সহচর।",
+      "প্ল্যাটফর্ম তৈরি ও পরীক্ষার সময়, আমরা এটিকে বাস্তব কৃষকের প্রতিক্রিয়ার উপর ভিত্তি করে রক্ষা করেছি। ফসল তালিকা ওয়ার্কফ্লো ডিজাইন থেকে শুরু করে প্রদর্শিত পরামর্শ নির্বাচন পর্যন্ত, আমরা ক্ষুদ্র কৃষক, কৃষি কর্মকর্তা এবং স্থানীয় সমবায়দের সঙ্গে পরামর্শ করেছি। এই যাত্রা শুধুমাত্র প্রযুক্তিগত নয়—এটি সহানুভূতি, সহযোগিতা এবং প্রাণবন্ত সমস্যার সঙ্গঠিত সমাধান।",
+      "একটি হ্যাকাথন MVP হিসাবে শুরু হওয়া এটি এখন একটি স্কেলেবেল ভিশনে রূপান্তরিত হয়েছে। KrishiNect গ্রামীণ সম্প্রদায়কে আরও ভালোভাবে চাষ, বুদ্ধিমানের সাথে বাণিজ্য এবং তথ্যবান হতে সাহায্য করতে চায়—তাদের নিজস্ব ভাষায়, তাদের নিজস্ব গতি অনুযায়ী। আমাদের যাত্রা এখন শুরু হয়েছে, এবং আমরা গর্বিত প্রতিটি কৃষকের সাথে হাঁটার জন্য, যারা একটি উন্নত আগামী দিনের স্বপ্ন দেখে।"
+    ],
+     featuresHeading:"✨ কৃষিনেক্ট-এর প্রধান বৈশিষ্ট্যসমূহ",
+    features: [
+  { title: "🧺 স্থানীয় ফসল এক্সচেঞ্জ", desc: "কৃষকরা স্থানীয়ভাবে ফসল কিনতে বা বিক্রি করতে পারেন।" },
+  { title: "📈 রিয়েল-টাইম বাজার দর", desc: "নিকটবর্তী বাজার থেকে তাৎক্ষণিক দাম দেখুন।" },
+  { title: "📚 ফসল পরামর্শ", desc: "সরকারি পরিকল্পনার সাথে সামঞ্জস্যপূর্ণ বহু ভাষায় পরামর্শ।" },
+  { title: "🌐 বহু ভাষার সাপোর্ট", desc: "১০+ ভাষায় উপলব্ধ।" },
+  { title: "📱 সহজ ব্যবহারযোগ্য ইন্টারফেস", desc: "গ্রামাঞ্চলের জন্য তৈরি, কম ডেটা খরচে কাজ করে।" },
+  { title: "🔒 ব্যক্তিগত ড্যাশবোর্ড", desc: "প্রত্যেক কৃষকের জন্য নিজস্ব হিসাব ও তালিকা।" }
+],
+contactHeading:"📬 আমাদের সাথে যোগাযোগ করুন",
+contactIntro:"আপনার মতামত, পরামর্শ বা সহযোগিতার প্রস্তাব আমাদের জানাতে পারেন! আমরা আপনার কথা শুনতে আগ্রহী।"
+
+    },
+    ta: {
+      subtitle: "ஒவ்வொரு விவசாயியின் டிஜிட்டல் துணை",
+      about: "எங்களை பற்றி",
+      navfeatures: "அம்சங்கள்",
+      contact: "தொடர்பு கொள்ள",
+      signIn: "உள்நுழையவும்",
+      signUp: "பதிவுபெறுங்கள்",
+      journeyHeading: "எங்கள் பயணம்",
+    journeyContent: [
+      "இந்தியாவின் வேளாண்மை அடிப்படைகள் ஆழமானவை, ஆனால் அதன் பயிர் உற்பத்தியாளர்கள் பெரும்பாலும் தகுதியான வளங்களில் அணுகல் இல்லாமல் தவிக்கிறார்கள். KrishiNect என்பது ஒரு கேள்வியுடன் ஆரம்பமானது — கிராமப்புற நெடுஞ்சாலைக் கண்மூடாமல், டிஜிட்டல் தீர்வுகளுக்கிடையிலான இடைவெளியை எவ்வாறு நிரப்புவது? ஒரு கிராமப்புற பயணத்தின் போது, நமது மாணவர் குழு நேரடி அல்லது நேர்மறையான முயற்சிகளை சந்தித்தது ― நேரடி மண்டி விலை அறியப்படாமல் இருப்பது, பயிர் பரிமாற்றத்திற்கு இடம் இல்லாதது, மற்றும் ஊடக மொழிகளில் பரிந்துரைகள் இல்லாமை.",
+      "மூலமாகத் தொடங்கி, நாங்கள் KrishiNect உருவாக்கத் தொடங்கினோம் — ஒரே நேரத்தில் இலேசான, பன்மொழி, பயிர் உற்பத்தியாளர்களுக்கு முதன்மை கொடுக்கும் ஒரு இணையதள மேடையை. எண்ணப்பழுது எளிமையானது: முக்கிய பயிர் சம்பந்தப்பட்ட சேவைகளை ஒன்றாக கூடி, குறைந்த நெட்வொர்க் கொண்ட கிராமப்புறங்களிலும் எளிதில் பயன்படுத்தக்கூடியதாக ஆக இதை வடிவமைத்தோம். பயனர்-நண்புவான வடிவமைப்பு, உள்ளூர் மொழி ஆதரவு; ஆஃப்லைன் அம்சங்களுடன், KrishiNect ஒரு திட்டம் மட்டுமே அல்ல—இந்தியத் தரக்கேளுழு உற்பத்தியாளரின் டிஜிட்டல் தோழன் தான்.",
+      "நாங்கள் உற்பத்தி செய்யப்பட்ட மேடையை வடிவமைத்து சோதனை செய்தபோது, அதை நிஜ பயிர் உற்பத்தியாளர்களின் கருத்துத்திட்டங்களை பின்பற்றச் சீரமைத்தோம். பயிர் பட்டியல் வேலைபாட்டு தயாரிப்புப் பார்க்கும் நிலைமையான தகவல்களின் தேர்வு வரை, குறுக்கிய பயிர் உற்பத்தியாளர்கள், வேளாண் அதிகாரிகள் மற்றும் உள்ளூர் கூட்டுறவுகளுடன் ஆலோசித்து முடித்தோம். இந்த பயணம் ஒரு தொழில்நுட்ப பயணம் மட்டுமல்ல—அது கருணை, ஒத்துழைப்பு மற்றும் நோக்கத்துடனான பிரச்சனைகள் தீர்க்கும் முழு முயற்சி.",
+      "ஒரு ஹேக்கத்தான் MVP என தொடங்கியது இந்த யோசெனை இப்போது ஒரு அளவிடக்கூடிய பார்வையாக மாற்றியுள்ளது. KrishiNect கிராமப்புற சமூகங்களுக்கு சிறந்த வளர்ச்சிக்கான, திறமையாக வர்த்தகம் நடத்தக்கூடியது, தகவல்மானம் அடையக்கூடிய சாதனங்களை வழங்க விரும்புகிறது —அல்லது அந்தச் சமூகத்தினரின் சொந்த மொழியிலும் சொந்த வேகத்திலும். எங்கள் பயணம் இப்போது துவங்கியுள்ளது, மேலும் சிறந்த நாளைக் காணும் ஒவ்வொரு பயிர் உற்பத்தியாளருடனும் அதில் நடப்பதில் நாம் பெருமை கொள்கிறோம்."
+    ],
+     featuresHeading:"✨ கிரிஷிநெக்ட் முக்கிய அம்சங்கள்",
+    features: [
+  { title: "🧺 உள்ளூர் பயிர் பரிமாற்றம்", desc: "உங்கள் பகுதியிலேயே பயிர்களை விற்பதற்கும் வாங்குவதற்கும் இடம்." },
+  { title: "📈 நேரடி சந்தை விலை", desc: "அருகிலுள்ள சந்தைகளிலிருந்து விலைப் பெறுங்கள்." },
+  { title: "📚 பயிர் ஆலோசனை", desc: "அரசு திட்டங்களுடன் ஒத்துப்போகும் பருவ ஆலோசனைகள்." },
+  { title: "🌐 பல மொழி ஆதரவு", desc: "10+ இந்திய மொழிகளில் கிடைக்கும்." },
+  { title: "📱 எளிய வடிவமைப்பு", desc: "குறைந்த தரவுடன் பயன்படுத்தக்கூடிய எளிமையான இடைமுகம்." },
+  { title: "🔒 தனிப்பட்ட டாஷ்போர்டு", desc: "ஒவ்வொரு விவசாயிக்கும் தனிப்பட்ட பயனர் அனுபவம்." }
+],
+contactHeading:"📬 எங்களை தொடர்பு கொள்ளவும்",
+contactIntro:"உங்கள் கருத்துகள், பரிந்துரைகள் அல்லது ஒத்துழைப்புகள் இருந்தால் எங்களை தொடர்பு கொள்ளுங்கள். உங்கள் கருத்தை கேட்க விரும்புகிறோம்!"
+
+    },
+    te: {
+      subtitle: "ప్రతి రైతుకి డిజిటల్ తోడు",
+      about: "మా గురించి",
+      navfeatures: "లక్షణాలు",
+      contact: "సంప్రదించండి",
+      signIn: "లాగిన్",
+      signUp: "రిజిస్టర్",
+      journeyHeading: "మా ప్రయాణం",
+    journeyContent: [
+      "భారతదేశ వ్యవసాయపు మూలాలు చాలా లోతుగా ఉన్నాయి, కానీ మన రైతులు తరచుగా తగిన వనరులకు సులభంగా చేరుకోలేక పోతున్నారు. KrishiNect ఒక ప్రశ్నతో ప్రారంభమైంది — గ్రామీణ అవసరాలు మరియు డిజిటల్ పరిష్కారాల మధ్య తేడాను ఏ విధంగా కనిష్టంగా భరించగలం, కానీ ఉపయోగంలో క్లిష్టత లేకుండా? ఒక గ్రామీణ ఫీల్డ్ సందర్శనలో, మా విద్యార్థి జట్టు రైతులు ఎదుర్కొంటున్న సమస్యలను ప్రత్యక్షంగా చూసింది: రియల్‑టైమ్ మండి (mandi) ధరల లేమి, రైతులు మధ్య రకం మార్పిడికి గల ప్లాట్‌ఫారంలు లేనివి, ప్రాంతీయ భాషల్లో సమయానుకూల సలహాల లేమి.",
+      "జీవితం పట్ల స్ఫూర్తితో, మనము KrishiNect అభివృద్ధి ప్రారంభించాము—బరువైన సంబంధమైన డిజిటల్ సాధనం కాకుండా, ఇది తేలికపాటి, బహుభాషా, రైతు‑ముఖ్యమైన వెబ్ ప్లాట్‌ఫారమ్. ఐడియా సరళమైనది: ముఖ్యమైన సాగు‑సంబంధిత సేవలను ఒకే తెంపులో జోడించి, కనిష్ట ఇంటర్నెట్‑ఉండే గ్రామీణ ప్రాంతాల్లోనూ ఉపయోగించదగినంగా తీర్చిదిద్దడం. వినియోగదారుడు‑మిత్రమైన డిజైన్‌, స్థానిక భాషా మద్దతు‌, ఆఫ్‌లైన్ ఫీచర్లతో, KrishiNect కేవలం ఒక ప్రాజెక్ట్ మాత్రమే కాదు—ఇది భారతీయ రైతు కోసం ఒక డిజిటల్ తోడు",
+      "మనం ప్లాట్‌ఫారమ్ ని నిర్మించి పరీక్షించినప్పుడు, నిజమైన రైతుల నుంచి వచ్చిన అభిప్రాయాలను దృష్టిలో ఉంచుకుంటూ నిర్మించాం. సాగు జాబితాల వర్క్‌ఫ్లో రూపకల్పన నుండి సూచనలను చూపించడాన్ని ఎంచుకున్న వరకు, చిన్న రైతులు, వ్యవసాయ అధికారులు, స్థానిక సహకార సంస్థలతో సంప్రదించి తీర్చిదిద్దాం. ఈ ప్రయాణం కేవలం టెక్నాలజీ గురుంచి మాత్రమే కాదు—ఇది సౌహార్ద్యం, సహకారం, మరియు ఆర్ధిక పరమైన సమస్యలకు లక్ష్యంగా చిట్కాలు అందిస్తున్న ప్రయాణం.",
+      "హ్యాకాథాన్ MVP గా ప్రారంభమైన ఈ ఆలోచన ఇప్పుడు ఒక విస్తరించు దృశ్యంగా మారింది. KrishiNect ద్వారా పల్లెలో నివసించే సమాజాలకు మెరుగైన పంటలు పొందేందుకు, తెలివిగా వాణిజ్యం చేయడానికి, సమాచారంతో ఉండేందుకు వారికి అవసరమైన పరికరాలను అందిస్తున్నాం—వారిది వారి స్వంత భాషలో, వారి స్వంత వేగంతో. మా యాత్ర ఇప్పుడు ప్రారంభమయ్యింది, మరియు అత్యుత్తమ రేపటి కలలు కలగలిసి చూసే ప్రతి రైతుతో ఈ ప్రయాణంలో నడపడంలో మనం గర్వంగా అనుభూతిపడుతున్నాం."
+    ],
+    featuresHeading:"✨ కృష్ణినెక్ట్ ముఖ్య లక్షణాలు",
+    features: [
+  { title: "🧺 లోకల్ పంటల మార్పిడి", desc: "రైతులు తమ ప్రాంతంలోనే పంటలను అమ్మకాలు లేదా కొనుగోళ్లకు పోస్ట్ చేయవచ్చు." },
+  { title: "📈 తక్షణ మండి ధరలు", desc: "సమీప మార్కెట్ల నుండి తాజా ధరలను పొందండి." },
+  { title: "📚 పంట సలహా", desc: "ప్రభుత్వ పథకాల ఆధారంగా సీజనల్ మార్గదర్శకాలు." },
+  { title: "🌐 బహుభాషా మద్దతు", desc: "10 కంటే ఎక్కువ భారతీయ భాషల్లో అందుబాటులో ఉంది." },
+  { title: "📱 తేలికైన ఇంటర్‌ఫేస్", desc: "గ్రామీణులకు అనుకూలమైన, తక్కువ డేటా వినియోగంతో." },
+  { title: "🔒 వ్యక్తిగత డాష్‌బోర్డ్", desc: "ప్రతి రైతుకి ప్రత్యేకమైన ఖాతా మరియు చరిత్ర." }
+],
+contactHeading:"📬 మాతో సంప్రదించండి",
+contactIntro:"మీ అభిప్రాయాలు, సూచనలు లేదా సహకారం కావాలంటే, మాతో పంచుకోండి! మేము మీ మాట వినేందుకు సిద్ధంగా ఉన్నాము."
+
+
+    },
+    gu: {
+      subtitle: "દર ખેડૂતનો ડિજિટલ સાથી",
+      about: "અમારા વિશે",
+      navfeatures: "વિશેષતાઓ",
+      contact: "સંપર્ક કરો",
+      signIn: "સાઇન ઇન",
+      signUp: "સાઇન અપ",
+      journeyHeading: "અમારું પ્રવાસ",
+    journeyContent: [
+      "ભારતનું ખેતીપ્રધાન વારસો ગાઢ છે, પણ ખેડૂતોને એ માટે જરૂરી સ્રોતો સુધી યોગ્ય અને સરળ પહોંચ મળતી નથી. કૃષિનેક્ટ એ પ્રશ્ન સાથે શરૂ થયું — શું આપણે ગ્રામ્ય જરૂરિયાતો અને ડિજિટલ ઉકેલ વચ્ચેનો અંતર ઘટાડીને સરળ બનાવી શકીએ? એક ગ્રામ્ય વિસ્તારના મુલાકાત દરમિયાન, અમારી વિદ્યાર્થી ટીમે ખેડૂતોની હાલતને નજીકથી અનુભવી: reais-time માંડી ભાવની અછત, સ્થાનિક પીઅર-ટુ-પીઅર ઉપજ વિનિમય માટે કોઈ પ્લેટફોર્મ નહીં હોવું અને પ્રાદેશિક ભાષામાં સિઝનલ સલાહનો અભાવ.",
+      "આ વિચારથી પ્રેરિત અને નક્કર નક્કી સાથે, અમે કૃષિનેક્ટ પર કામ શરૂ કર્યું — એક હલકું, બહુભાષી અને ખેડૂત-પ્રથમ વેબ પ્લેટફોર્મ. વિચાર સરળ હતો: જરૂરી કૃષિ સેવાઓને એક જ જગ્યાએ, સરળ અને નેટ ન હોવા છતાં પણ પહોંચે તે રીતે તૈયાર કરવું. લોકલ ભાષા આધાર અને ઑફલાઇન ફીચર્સ સાથે, કૃષિનેક્ટ માત્ર એક પ્રોજેક્ટ નથી — તે ભારતીય ખેડૂત માટેનો ડિજિટલ સાથી છે.",
+      "અમે જ્યારે પ્લેટફોર્મ બનાવ્યું અને ચકાસ્યું, ત્યારે અમે ખાતરી કરી કે તે ખરેખર ખેડૂતોની ફીડબેક પર આધારિત રહે. અમે નાના ખેડૂત, કૃષિ અધિકારીઓ અને સ્થાનિક સહકારી સંસ્થાઓ સાથે ચર્ચા કરી. આ સફર માત્ર ટેક્નોલોજી વિશે નહોતિ — એ હતી સહાનુભૂતિ, સહકાર અને યોગ્ય ઉકેલ માટેની દીર્ઘદ્રષ્ટિ.",
+      "જે હેકાથોન MVP તરીકે શરૂ થયું, તે હવે એક વ્યાપક દૃષ્ટિકોણમાં બદલાઈ ગયું છે. કૃષિનેક્ટનો હેતુ છે ગામડાના ખેડૂતોને યોગ્ય સાધનો સાથે સશક્ત બનાવવો — તેમની ભાષામાં, તેમની પેસ સાથે."
+    ],
+     featuresHeading:"✨ કૃષિનેક્ટ ની મુખ્ય વિશેષતાઓ",
+    features: [
+  { title: "🧺 સ્થાનિક પાક વિનિમય", desc: "કિસાનો સ્થાનિક રીતે પાક વેચી અથવા ખરીદી શકે છે." },
+  { title: "📈 માર્જીન ભાવ", desc: "નજીકના બજારોમાંથી તાજા ભાવ મેળવો." },
+  { title: "📚 પાક સલાહ", desc: "સરકારી યોજના આધારીત હંગામી માર્ગદર્શન." },
+  { title: "🌐 બહુભાષા સપોર્ટ", desc: "૧૦+ ભારતીય ભાષાઓમાં ઉપલબ્ધ." },
+  { title: "📱 સરળ યુઆઇ", desc: "લૉ નેટવર્ક માટે અનુકૂળ ડિઝાઇન." },
+  { title: "🔒 વ્યક્તિગત ડેશબોર્ડ", desc: "દર કિસાન માટે પોતાનું વ્યક્તિગત પોર્ટલ." }
+],
+contactHeading:"📬 અમારો સંપર્ક કરો",
+contactIntro:"તમારા પ્રતિસાદ, સૂચનો કે સહકારની તમે સાથે વહેંચી શકો છો! અમને તમારી વાત સાંભળવી ગમશે."
+
+    },
+    kn: {
+      subtitle: "ಪ್ರತಿ ರೈತನ ಡಿಜಿಟಲ್ ಸಹಾಯ",
+      about: "ನಮ್ಮ ಬಗ್ಗೆ",
+      navfeatures: "ಲಕ್ಷಣಗಳು",
+      contact: "ಸಂಪರ್ಕಿಸಿ",
+      signIn: "ಸೈನ್ ಇನ್",
+      signUp: "ಸೈನ್ ಅಪ್",
+      journeyHeading: "ನಮ್ಮ ಪ್ರಯಾಣ",
+    journeyContent: [
+      "ಭಾರತದ ಕೃಷಿ ಮೂಲಗಳು ಆಳವಾಗಿವೆ, ಆದರೆ ಇಲ್ಲಿ ಇರುವ ರೈತರು ಅವರಿಗೆ ಅಗತ್ಯವಿರುವ ಸಂಪನ್ಮೂಲಗಳಿಗೆ ಸರಿಯಾದ ಪ್ರವೇಶವನ್ನು ಪಡೆಯಲು ತೀವ್ರವಾದ ಕಷ್ಟಗಳನ್ನು ಅನುಭವಿಸುತ್ತಿದ್ದಾರೆ. ಕೃಷಿನೆಕ್ಟ್ ಈ ಪ್ರಶ್ನೆಯಿಂದ ಆರಂಭವಾಯಿತು — ಸ್ಥಳೀಯ ಅವಶ್ಯಕತೆಗಳು ಮತ್ತು ಡಿಜಿಟಲ್ ಪರಿಹಾರಗಳ ನಡುವಿನ ಅಂತರವನ್ನು ಸರಳವಾಗಿ ಹೇಗೆ ತುಂಬಬಹುದು? ಗ್ರಾಮೀಣ ಕ್ಷೇತ್ರದ ಒಂದು ಭೇಟಿಯ ಸಂದರ್ಭದಲ್ಲಿ, ನಮ್ಮ ವಿದ್ಯಾರ್ಥಿ ತಂಡವು ರೈತರು ಎದುರಿಸುತ್ತಿರುವ ಪ್ರಮುಖ ಸಮಸ್ಯೆಗಳನ್ನು ನೇರವಾಗಿ ಕಂಡಿತು: ತಕ್ಷಣದ ಮಾರುಕಟ್ಟೆ ಬೆಲೆಯ ಕೊರತೆ, ಸಮಾನ ರೈತರೊಂದಿಗೆ ಬೆಳೆ ವಿನಿಮಯಕ್ಕಾಗಿ ಸ್ಥಳೀಯ ವೇದಿಕೆಯ ಕೊರತೆ, ಮತ್ತು ಪ್ರಾದೇಶಿಕ ಭಾಷೆಗಳಲ್ಲಿ ಸೂಕ್ತ ಪತಾಜ್ಞಾನದ ಲಭ್ಯತೆ ಇಲ್ಲ.",
+      "ಪ್ರೇರಣೆಯಿಂದ ಮತ್ತು ದೃಢ ನಿಶ್ಚಯದಿಂದ, ನಾವು ಕೃಷಿನೆಕ್ಟ್ ಎಂಬ ಒಂದು ತೂಕಕ್ಕಿಂತ ಕಡಿಮೆ, ಬಹುಭಾಷಾ, ರೈತ-ಪ್ರಥಮ ವೆಬ್ ವೇದಿಕೆಯ ಮೇಲೆ ಕೆಲಸವನ್ನು ಆರಂಭಿಸಿದ್ದೇವೆ. ಆ ಕಲ್ಪನೆಯು ಸರಳವಾಗಿತ್ತು: ಮೂಲಭೂತ ಬೆಳೆ ಆಧಾರಿತ ಸೇವೆಗಳನ್ನು ಒಂದು ಸ್ಥಳೀಯ, ಸುಲಭ ಉಪಯೋಗವಾಗುವ ಸಾಧನದ ಮೂಲಕ ಒದಗಿಸುವುದು — ಅದು ಕಡಿಮೆ ನೆಟ್ವರ್ಕ್ ಪ್ರದೇಶದಲ್ಲೂ ಸಿಗಬೇಕಾದ್ದಾಗಿದೆ. ಬಳಕೆದಾರ ಸ್ನೇಹಿ ವಿನ್ಯಾಸ, ಸ್ಥಳೀಯ ಭಾಷಾ ಬೆಂಬಲ ಮತ್ತು ಆಫ್‌ಲೈನ್ ವೈಶಿಷ್ಟ್ಯಗಳೊಂದಿಗೆ, ಕೃಷಿನೆಕ್ಟ್ ಒಂದು ಯೋಜನೆ ಮಾತ್ರವಲ್ಲ — ಇದು ಭಾರತೀಯ ರೈತನ ಡಿಜಿಟಲ್ ಸಂಗಾತಿಯಾಗಿದೆ.",
+      "ನಾವು ಈ ವೇದಿಕೆಯನ್ನು ನಿರ್ಮಿಸಿ ಪರೀಕ್ಷಿಸುತ್ತಿದ್ದಾಗ, ನಿಜವಾದ ರೈತರ ಪ್ರತಿಕ್ರಿಯೆಗಳ ಆಧಾರದಲ್ಲಿ ಮುಂದುವರಿಯುವಂತೆ ನೋಡಿಕೊಂಡೆವು. ಬೆಳೆ ಪಟ್ಟಿಯ ಕಾರ್ಯಪ್ರವಾಹದಿಂದ ಹಿಡಿದು ಸಲಹೆ ಆಯ್ಕೆ ಮಾಡುವುದು ತನಕ, ನಾವು ಸಣ್ಣ ರೈತರು, ಕೃಷಿ ಅಧಿಕಾರಿಗಳು ಮತ್ತು ಸ್ಥಳೀಯ ಸಹಕಾರ ಸಂಘಗಳೊಂದಿಗೆ ಸುದೀರ್ಘವಾಗಿ ಚರ್ಚೆ ಮಾಡಿದೆವು. ಈ ಪ್ರಯಾಣವು ಕೇವಲ ತಂತ್ರಜ್ಞಾನದ ಬಗ್ಗೆ ಅಲ್ಲ — ಇದು ಸಹಾನುಭೂತಿ, ಸಹಕಾರ ಮತ್ತು ಉದ್ದೇಶಪೂರ್ವಕ ಸಮಸ್ಯೆಗಳ ಪರಿಹಾರದ ಬಗ್ಗೆ.",
+      "ಒಂದು ಹ್ಯಾಕಥಾನ್ MVP ಆಗಿ ಪ್ರಾರಂಭವಾದ ಕೃಷಿನೆಕ್ಟ್, ಈಗ ಲಕ್ಷಾಂತರ ಗ್ರಾಮೀಣ ರೈತರಿಗೆ ಮಾಪನೀಯ ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ಬೆಳೆಗಾರಿಕೆ, ವ್ಯಾಪಾರ ಮತ್ತು ಮಾಹಿತಿ ಸಿದ್ಧತೆಗಾಗಿ ಹೊಸ ದಾರಿ ತೋರಿಸುತ್ತಿದೆ — ಅವರದೇ ಆದ ಭಾಷೆಯಲ್ಲಿ, ಅವರದೇ ಆದ ವೇಗದಲ್ಲಿ."
+    ],
+     featuresHeading:"✨ ಕೃಷಿನೆಕ್ಟ್‌ನ ಪ್ರಮುಖ ವೈಶಿಷ್ಟ್ಯಗಳು",
+    features: [
+  { title: "🧺 ಸ್ಥಳೀಯ ಬೆಳೆ ವಿನಿಮಯ", desc: "ರೈತರು ತಮ್ಮ ಪ್ರದೇಶದಲ್ಲಿ ಬೆಳೆಗಳನ್ನು ವಿಕ್ರಯ ಅಥವಾ ಖರೀದಿ ಮಾಡಬಹುದು." },
+  { title: "📈 ತಕ್ಷಣದ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ", desc: "ಹತ್ತಿರದ ಮಾರುಕಟ್ಟೆಯಿಂದ ನವೀಕೃತ ದರಗಳನ್ನು ಪಡೆಯಿರಿ." },
+  { title: "📚 ಬೆಳೆ ಸಲಹೆ", desc: "ಸರ್ಕಾರದ ಯೋಜನೆಗಳಿಗೆ ಹೊಂದಾಣಿಕೆಯ ಸಲಹೆಗಳು." },
+  { title: "🌐 ಬಹುಭಾಷಾ ಬೆಂಬಲ", desc: "10+ ಭಾರತೀಯ ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯವಿದೆ." },
+  { title: "📱 ಸರಳ ಬಳಕೆದಾರ ಸಂಪರ್ಕ", desc: "ಗ್ರಾಮೀಣ ಬಳಕೆದಾರರಿಗಾಗಿ ಕಡಿಮೆ ಡೇಟಾದೊಂದಿಗೆ ವಿನ್ಯಾಸ." },
+  { title: "🔒 ವೈಯಕ್ತಿಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್", desc: "ಪ್ರತಿ ರೈತರಿಗೆ ವೈಯಕ್ತಿಕ ಡೇಟಾ ಮತ್ತು ಇತಿಹಾಸ." }
+],
+contactHeading:"📬 ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+contactIntro:"ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ, ಸಲಹೆಗಳು ಅಥವಾ ಸಹಕಾರ ಬೇಕಾದರೆ, ದಯವಿಟ್ಟು ನಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ! ನಿಮ್ಮ ಮಾತು ಕೇಳಲು ನಾವು ಇಚ್ಛಿಸುತ್ತೇವೆ."
+
+    },
+    ur: {
+      subtitle: "ہر کسان کا ڈیجیٹل ساتھی",
+      about: "ہمارے بارے میں",
+      navfeatures: "خصوصیات",
+      contact: "ہم سے رابطہ کریں",
+      signIn: "سائن ان",
+      signUp: "سائن اپ",
+      journeyHeading: "ماری مسافت",
+    journeyContent: [
+      "بھارت کی زرعی جڑیں بہت گہری ہیں، لیکن ہمارے کسان اکثر ان وسائل تک رسائی حاصل نہیں کر پاتے جن کے وہ حقدار ہیں۔ KrishiNect کا آغاز ایک سوال سے ہوا — کیا ہم زمینی سطح کی ضروریات اور ڈیجیٹل حلوں کے درمیان خلا کو سادہ طریقے سے پاٹ سکتے ہیں؟ ایک دیہی دورے کے دوران، ہماری طالب علم ٹیم نے کسانوں کی مشکلات کو براہِ راست دیکھا: جیسے کہ منڈی کے ریئل ٹائم نرخوں کی کمی، کسان سے کسان فصلوں کے تبادلے کے لیے کوئی پلیٹ فارم نہ ہونا، اور علاقائی زبانوں میں موسمی مشوروں کی عدم دستیابی۔",
+      "اسی جذبے اور ارادے کے ساتھ ہم نے KrishiNect پر کام شروع کیا — ایک ہلکا پھلکا، کثیر لسانی، کسان-مرکوز ویب پلیٹ فارم۔ خیال یہ تھا کہ ضروری زرعی خدمات کو ایک ایسی سادہ اور یکجا شکل میں لایا جائے جو کم نیٹ ورک والے دیہی علاقوں میں بھی بآسانی کام کر سکے۔ صارف دوست ڈیزائن، مقامی زبانوں میں معاونت، اور آف لائن فیچرز کے ساتھ KrishiNect صرف ایک پروجیکٹ نہیں — یہ بھارتی کسان کے لیے ایک ڈیجیٹل ساتھی ہے۔",
+      "جب ہم نے اس پلیٹ فارم کو ڈیزائن اور ٹیسٹ کیا، تو ہم نے اس کی بنیاد کسانوں کی اصل رائے پر رکھی۔ فصلوں کی فہرست بنانے سے لے کر مشوروں کے انتخاب تک، ہم نے چھوٹے کسانوں، زرعی افسران، اور مقامی کوآپریٹو اداروں سے مشاورت کی۔ یہ سفر صرف ٹیکنالوجی کے بارے میں نہیں تھا — یہ ہمدردی، اشتراک، اور مسائل کے بامقصد حل کے بارے میں تھا۔",
+      "جو ایک ہیکاتھون MVP کے طور پر شروع ہوا تھا، وہ اب ایک قابل توسیع وژن میں بدل چکا ہے۔ KrishiNect کا مقصد دیہی برادریوں کو بااختیار بنانا ہے تاکہ وہ بہتر فصل اگا سکیں، ذہانت سے کاروبار کریں، اور باخبر رہیں — وہ بھی اپنی زبان میں، اپنی رفتار سے۔ ہمارا سفر تو ابھی شروع ہوا ہے، اور ہمیں فخر ہے کہ ہم ہر اُس کسان کے ساتھ کھڑے ہیں جو ایک بہتر کل کا خواب دیکھتا ہے۔"
+    ],
+     featuresHeading:"✨ کرشینیکٹ کی اہم خصوصیات",
+    features: [
+  { title: "🧺 مقامی فصل کا تبادلہ", desc: "کسان اپنی پیداوار مقامی سطح پر خرید و فروخت کے لیے پوسٹ کر سکتے ہیں۔" },
+  { title: "📈 منڈی کے ریئل ٹائم ریٹس", desc: "قریبی منڈیوں سے تازہ نرخ حاصل کریں۔" },
+  { title: "📚 فصل سے متعلق مشورہ", desc: "حکومتی اسکیموں کے مطابق موسمی رہنمائی، آفلائن بھی دستیاب۔" },
+  { title: "🌐 کثیر لسانی معاونت", desc: "10 سے زیادہ زبانوں میں دستیاب۔" },
+  { title: "📱 سادہ یوزر انٹرفیس", desc: "کم ڈیٹا کے ساتھ چلنے والا، دیہی علاقوں کے لیے موزوں۔" },
+  { title: "🔒 ذاتی ڈیش بورڈ", desc: "ہر کسان کے لیے اپنی فہرست، تاریخ اور پروفائل۔" }
+],
+contactHeading:"📬 ہم سے رابطہ کریں",
+contactIntro:"اگر آپ کے پاس تجاویز، رائے یا تعاون کی خواہش ہے تو ہم سننے کے لیے تیار ہیں!"
+
+    }
+
+    
+    // Add more languages as needed
+  };
+
+  
+  document.getElementById("langSelector").addEventListener("change", function () {
+    const lang = this.value;
+    const t = translations[lang] || translations["en"];
+
+   
+    document.getElementById("homeSubtitle").innerText = t.subtitle;
+    document.getElementById("navAbout").innerText = t.about;
+    document.getElementById("navFeatures").innerText = t.navfeatures;
+    document.getElementById("navContact").innerText = t.contact;
+    document.getElementById("btnSignIn").innerText = t.signIn;
+    document.getElementById("btnSignUp").innerText = t.signUp;
+    document.getElementById("journeyHeading").innerText = t.journeyHeading;
+    document.getElementById("featuresHeading").innerText = t.featuresHeading;
+    document.getElementById("contactHeading").innerText = t.contactHeading;
+    document.getElementById("contactIntro").innerText = t.contactIntro;
+
+    const journeyDiv = document.getElementById("journeyContent");
+journeyDiv.innerHTML = "";
+t.journeyContent.forEach(para => {
+  const p = document.createElement("p");
+  p.textContent = para;
+  journeyDiv.appendChild(p);
+});
+
+  for (let i = 0; i < t.features.length; i++) {
+    document.getElementById(`feature${i + 1}Title`).innerText = t.features[i].title;
+    document.getElementById(`feature${i + 1}Desc`).innerText = t.features[i].desc;
+  }
+
+
+
+     
+
+  });
+
+
+
+
+
+</script>
+<script>
+  let chatbotVisible = false;
+
+  function toggleChatbot() {
+    chatbotVisible = !chatbotVisible;
+    document.getElementById("chatbotBox").style.display = chatbotVisible ? "flex" : "none";
+  }
+
+   const faqs = {
+    en: [
+    { q: "📋 What are the main features?", a: "KrishiNect offers crop posting, listings, mandi rates, advisory & multilingual support." },
+    { q: "🧑‍🌾 How do I post my crop?", a: "Go to the dashboard and click on 'Post Crop', then fill in the details and submit." },
+    { q: "📦 Where can I view crop listings?", a: "Click on 'View Listings' to see other farmers' posted crops." },
+    { q: "📈 How to check mandi prices?", a: "Click 'Mandi Bhav' to view latest prices from nearby markets." },
+    { q: "🧠 What is crop advisory?", a: "Expert seasonal farming tips aligned with government schemes." },
+    { q: "🌐 How can I change the language?", a: "Use the language selector on the top-right corner." },
+    { q: "📞 How do I contact the team?", a: "Email support@krishinect.in or call +91-9876543210." }
+  ],
+  hi: [
+    { q: "📋 मुख्य सुविधाएं क्या हैं?", a: "फसल पोस्ट करना, लिस्टिंग देखना, मंडी भाव, सलाह और बहुभाषी समर्थन उपलब्ध हैं।" },
+    { q: "🧑‍🌾 मैं फसल कैसे पोस्ट करूं?", a: "'फसल जोड़ें' पर क्लिक करें, विवरण भरें और सबमिट करें।" },
+    { q: "📦 मैं अन्य फसल लिस्टिंग कहाँ देखूं?", a: "'फसल लिस्ट देखें' पर क्लिक करें और लिस्टिंग ब्राउज़ करें।" },
+    { q: "📈 मंडी भाव कैसे देखें?", a: "'मंडी भाव' पर क्लिक करके ताज़ा मंडी दाम देखें।" },
+    { q: "🧠 फसल सलाह क्या है?", a: "सरकारी योजनाओं से जुड़ी मौसमी कृषि सलाह।" },
+    { q: "🌐 भाषा कैसे बदलें?", a: "ऊपर दिए गए भाषा ड्रॉपडाउन से भाषा बदलें।" },
+    { q: "📞 टीम से संपर्क कैसे करें?", a: "support@krishinect.in पर ईमेल करें या +91-9876543210 पर कॉल करें।" }
+  ],
+  pa: [
+    { q: "📋 ਮੁੱਖ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਕੀ ਹਨ?", a: "KrishiNect ਫਸਲ ਪੋਸਟ, ਲਿਸਟਿੰਗ, ਮੰਡੀ ਭਾਅ, ਸਲਾਹ ਅਤੇ ਬਹੁਭਾਸ਼ਾਈ ਸਹਾਇਤਾ ਦਿੰਦਾ ਹੈ।" },
+    { q: "🧑‍🌾 ਮੈਂ ਆਪਣੀ ਫਸਲ ਕਿਵੇਂ ਪੋਸਟ ਕਰਾਂ?", a: "'ਫਸਲ ਪੋਸਟ ਕਰੋ' ਉੱਤੇ ਕਲਿੱਕ ਕਰੋ ਤੇ ਵੇਰਵੇ ਭਰੋ।" },
+    { q: "📦 ਮੈਂ ਫਸਲਾਂ ਦੀ ਲਿਸਟ ਕਿੱਥੇ ਵੇਖ ਸਕਦਾ ਹਾਂ?", a: "'ਲਿਸਟਿੰਗ ਵੇਖੋ' 'ਤੇ ਕਲਿੱਕ ਕਰੋ।" },
+    { q: "📈 ਮੰਡੀ ਭਾਅ ਕਿਵੇਂ ਵੇਖੀਏ?", a: "'ਮੰਡੀ ਭਾਅ' 'ਤੇ ਕਲਿੱਕ ਕਰਕੇ ਭਾਅ ਵੇਖੋ।" },
+    { q: "🧠 ਫਸਲ ਸਲਾਹ ਕੀ ਹੈ?", a: "ਮੌਸਮੀ ਤੇ ਸਰਕਾਰੀ ਸਕੀਮਾਂ ਅਨੁਸਾਰ ਸਲਾਹ।" },
+    { q: "🌐 ਭਾਸ਼ਾ ਕਿਵੇਂ ਬਦਲਣੀ?", a: "ਉੱਪਰ ਦਿੱਤੇ ਭਾਸ਼ਾ ਵਿਕਲਪ ਤੋਂ।" },
+    { q: "📞 ਸੰਪਰਕ ਕਿਵੇਂ ਕਰੀਏ?", a: "support@krishinect.in ਉੱਤੇ ਈਮੇਲ ਕਰੋ ਜਾਂ ਕਾਲ ਕਰੋ।" }
+  ],
+  mr: [
+    { q: "📋 मुख्य वैशिष्ट्ये काय आहेत?", a: "KrishiNect फसल पोस्टिंग, लिस्टिंग, मंडी भाव, सल्ला आणि बहुभाषिक सपोर्ट देतो।" },
+    { q: "🧑‍🌾 फसल पोस्ट कशी करायची?", a: "'फसल पोस्ट करा' क्लिक करा आणि तपशील भरा।" },
+    { q: "📦 लिस्टिंग कुठे पाहायची?", a: "'लिस्टिंग पहा' वर क्लिक करा।" },
+    { q: "📈 मंडी भाव कसे पाहायचे?", a: "'मंडी भाव' क्लिक करा आणि दर पाहा।" },
+    { q: "🧠 फसल सल्ला म्हणजे काय?", a: "हंगामी सल्ला जो सरकारी योजनांशी संलग्न आहे।" },
+    { q: "🌐 भाषा कशी बदलायची?", a: "वरील भाषा निवडणीतून।" },
+    { q: "📞 संपर्क कसा करायचा?", a: "support@krishinect.in ला मेल करा किंवा कॉल करा।" }
+  ],
+  bn: [
+    { q: "📋 প্রধান বৈশিষ্ট্যগুলি কী?", a: "KrishiNect ফসল পোস্টিং, তালিকা, বাজার দর, পরামর্শ এবং বহু ভাষার সহায়তা প্রদান করে।" },
+    { q: "🧑‍🌾 আমি কিভাবে ফসল পোস্ট করব?", a: "'ফসল পোস্ট করুন'-এ ক্লিক করে বিস্তারিত পূরণ করুন।" },
+    { q: "📦 তালিকা কোথায় দেখতে পারি?", a: "'ফসল তালিকা দেখুন' এ ক্লিক করুন।" },
+    { q: "📈 বাজার দর কোথা থেকে দেখব?", a: "'মার্কেট প্রাইস' এ ক্লিক করুন।" },
+    { q: "🧠 ফসল পরামর্শ কী?", a: "সরকারি পরিকল্পনার উপর ভিত্তি করে মৌসুমী পরামর্শ।" },
+    { q: "🌐 ভাষা কীভাবে পরিবর্তন করব?", a: "উপরের ডানদিকের ভাষা সিলেক্টর ব্যবহার করুন।" },
+    { q: "📞 কিভাবে যোগাযোগ করব?", a: "support@krishinect.in এ ইমেল করুন বা ফোন করুন।" }
+  ],
+  ta: [
+    { q: "📋 முக்கிய அம்சங்கள் என்ன?", a: "KrishiNect பயிர் பதிவேற்றம், பட்டியல், சந்தை விலை, ஆலோசனை மற்றும் பன்மொழி ஆதரவை வழங்குகிறது." },
+    { q: "🧑‍🌾 நான் எப்படி பயிர் பதிவேற்றுவது?", a: "'பயிர் பதிவேற்றம்' கிளிக் செய்து விவரங்களை உள்ளிடுங்கள்." },
+    { q: "📦 பட்டியல் எங்கு காணலாம்?", a: "'பட்டியல் காண்க' கிளிக் செய்யவும்." },
+    { q: "📈 சந்தை விலை எங்கு பார்க்கலாம்?", a: "'சந்தை விலை' பக்கம் கிளிக் செய்யவும்." },
+    { q: "🧠 பயிர் ஆலோசனை என்றால் என்ன?", a: "மோசமான பருவங்களில் அரசு ஆலோசனை." },
+    { q: "🌐 மொழி எப்படி மாற்றுவது?", a: "மேலே உள்ள மொழி தேர்வை பயன்படுத்தவும்." },
+    { q: "📞 தொடர்பு எங்கே?", a: "support@krishinect.in-க்கு மின்னஞ்சல் செய்யவும் அல்லது அழைக்கவும்." }
+  ],
+  te: [
+    { q: "📋 ముఖ్య లక్షణాలు ఏమిటి?", a: "KrishiNect పంట పోస్ట్ చేయడం, జాబితాలు, మార్కెట్ ధరలు, సలహాలు మరియు బహుళ భాషల మద్దతు ఇస్తుంది." },
+    { q: "🧑‍🌾 నేను పంటను ఎలా పోస్ట్ చేయాలి?", a: "'పంటను పోస్ట్ చేయండి' క్లిక్ చేసి వివరాలు ఇవ్వండి." },
+    { q: "📦 పంట జాబితాలు ఎక్కడ చూడాలి?", a: "'జాబితాలను చూడండి' క్లిక్ చేయండి." },
+    { q: "📈 మార్కెట్ ధరలు ఎలా చూడాలి?", a: "'మార్కెట్ ధరలు' క్లిక్ చేయండి." },
+    { q: "🧠 పంట సలహా అంటే ఏమిటి?", a: "ప్రభుత్వం ఇచ్చే మౌసుమీ సలహాలు." },
+    { q: "🌐 భాష ఎలా మార్చాలి?", a: "ముందున్న భాష ఎంపికను వాడండి." },
+    { q: "📞 ఎలా సంప్రదించాలి?", a: "support@krishinect.in కి ఇమెయిల్ పంపండి లేదా కాల్ చేయండి." }
+  ],
+  gu: [
+    { q: "📋 મુખ્ય લક્ષણો શું છે?", a: "KrishiNect પાક પોસ્ટિંગ, લિસ્ટિંગ, બજાર ભાવ, સલાહ અને ભાષાકીય સપોર્ટ આપે છે." },
+    { q: "🧑‍🌾 પાક કેવી રીતે પોસ્ટ કરવો?", a: "'પાક ઉમેરો' પર ક્લિક કરો અને વિગતો દાખલ કરો." },
+    { q: "📦 લિસ્ટિંગ કઈ રીતે જુઓ?", a: "'યાદી જુઓ' પર ક્લિક કરો." },
+    { q: "📈 બજાર ભાવ કઈ રીતે જુઓ?", a: "'માર્કેટ પ્રાઈસ' પર ક્લિક કરો." },
+    { q: "🧠 પાક સલાહ શું છે?", a: "સરકારી યોજનાઓ સાથે જોડાયેલી કૃષિ સલાહ." },
+    { q: "🌐 ભાષા કેવી રીતે બદલો?", a: "ઉપરના ભાષા પસંદગી વિંડો વાપરો." },
+    { q: "📞 સંપર્ક કેવી રીતે કરવો?", a: "support@krishinect.in પર ઈમેલ કરો અથવા ફોન કરો." }
+  ],
+  kn: [
+    { q: "📋 ಪ್ರಮುಖ ವೈಶಿಷ್ಟ್ಯಗಳೇನು?", a: "KrishiNect ಬೆಳೆ ಪೋಸ್ಟ್, ಪಟ್ಟಿಗಳು, ಮಾರುಕಟ್ಟೆ ದರಗಳು, ಸಲಹೆಗಳು ಮತ್ತು ಬಹುಭಾಷಾ ಬೆಂಬಲವನ್ನು ಒದಗಿಸುತ್ತದೆ." },
+    { q: "🧑‍🌾 ನಾನು ಬೆಳೆ ಹೇಗೆ ಪೋಸ್ಟ್ ಮಾಡಲಿ?", a: "'ಬೆಳೆ ಪೋಸ್ಟ್ ಮಾಡಿ' ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ವಿವರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ." },
+    { q: "📦 ಪಟ್ಟಿಗಳನ್ನು ಎಲ್ಲಿ ನೋಡಬಹುದು?", a: "'ಪಟ್ಟಿಯನ್ನು ನೋಡಿ' ಕ್ಲಿಕ್ ಮಾಡಿ." },
+    { q: "📈 ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಹೇಗೆ ನೋಡಬೇಕು?", a: "'ಮಾರುಕಟ್ಟೆ ಬೆಲೆ' ಕ್ಲಿಕ್ ಮಾಡಿ." },
+    { q: "🧠 ಬೆಳೆ ಸಲಹೆ ಎಂದರೆ ಏನು?", a: "ಸರ್ಕಾರದ ಯೋಜನೆಗಳಿಗೆ ತಕ್ಕಂತೆ ಉಚಿತ ಕೃಷಿ ಸಲಹೆ." },
+    { q: "🌐 ಭಾಷೆ ಹೇಗೆ ಬದಲಾಯಿಸಬೇಕು?", a: "ಮೇಲಿನ ಭಾಷೆ ಆಯ್ಕೆ ಬಳಸಿ." },
+    { q: "📞 ಸಂಪರ್ಕ ಹೇಗೆ ಮಾಡುವುದು?", a: "support@krishinect.in ಗೆ ಇಮೇಲ್ ಅಥವಾ ಕಾಲ್ ಮಾಡಿ." }
+  ],
+  ur: [
+    { q: "📋 اہم خصوصیات کیا ہیں؟", a: "KrishiNect فصل کی پوسٹنگ، فہرستیں، منڈی کے نرخ، مشورہ اور کثیر لسانی مدد فراہم کرتا ہے۔" },
+    { q: "🧑‍🌾 فصل کیسے پوسٹ کریں؟", a: "'فصل پوسٹ کریں' پر کلک کریں اور تفصیلات درج کریں۔" },
+    { q: "📦 فہرستیں کہاں دیکھوں؟", a: "'فہرست دیکھیں' پر کلک کریں۔" },
+    { q: "📈 منڈی نرخ کہاں دیکھوں؟", a: "'منڈی بھاؤ' پر کلک کریں۔" },
+    { q: "🧠 فصل مشورہ کیا ہے؟", a: "حکومتی اسکیموں کے مطابق موسمی مشورہ۔" },
+    { q: "🌐 زبان کیسے تبدیل کریں؟", a: "اوپر والے زبان کے مینو سے۔" },
+    { q: "📞 رابطہ کیسے کریں؟", a: "support@krishinect.in پر ای میل کریں یا کال کریں۔" }
+  ]
+    // Add other languages as needed...
+  };
+
+  const chatFAQs = document.getElementById("chatFAQs");
+  const chatAnswer = document.getElementById("chatAnswer");
+
+  function toggleChatbot() {
+    const box = document.getElementById("chatbotBox");
+    box.style.display = box.style.display === "flex" ? "none" : "flex";
+    renderFAQs();
+  }
+
+  function renderFAQs() {
+    const lang = document.getElementById("langSelector")?.value || "en";
+    chatFAQs.innerHTML = "";
+    chatAnswer.innerText = "";
+
+    (faqs[lang] || faqs["en"]).forEach((item, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "faq-button";
+      btn.innerText = item.q;
+      btn.onclick = () => chatAnswer.innerText = item.a;
+      chatFAQs.appendChild(btn);
+    });
+  }
+
+  // Re-render FAQs if language is changed
+  document.getElementById("langSelector").addEventListener("change", renderFAQs);
+</script>
+
+<script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }
+
+    window.onscroll = function () {
+      document.getElementById("scrollTopBtn").style.display = window.scrollY > 300 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+  authDomain: "krishinect-39b8e.firebaseapp.com",
+  projectId: "krishinect-39b8e",
+  storageBucket: "krishinect-39b8e.firebasestorage.app",
+  messagingSenderId: "894539525913",
+  appId: "1:894539525913:web:1100591bbfc25c7148df88"
+};
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    window.signUp = async function () {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!name || !email || !password) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const uid = userCredential.user.uid;
+
+    // ✅ WAIT for Firestore to save the name before redirecting
+    await setDoc(doc(db, "farmers", uid), {
+      name,
+      email,
+      uid,
+      createdAt: new Date().toISOString()
+    });
+
+    alert("✅ Account created! You can now sign in.");
+    window.location.href = "signin.html";
+  } catch (error) {
+    console.error("Signup error:", error);
+    alert("❌ Signup failed: " + error.message);
+  }
+};
+
+  </script>
+</head>
+<body>
+  <button class="back-btn" onclick="location.href='home.html'">← Back to Home</button>
+
+  <div class="auth-page">
+    <div class="card">
+      <h2>🌱 Create Your KrishiNect Account</h2>
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button onclick="signUp()">Sign Up</button>
+      <p>Already have an account? <a href="signin.html">Sign in</a></p>
+    </div>
+  </div>
+</body>
+</html>

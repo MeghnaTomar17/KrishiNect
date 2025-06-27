@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KrishiNect – Smart Agriculture</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <select id="language">
+  <option value="en">English</option>
+  <option value="hi">हिन्दी</option>
+  <option value="pa">ਪੰਜਾਬੀ</option>
+  <option value="mr">मराठी</option>
+  <option value="bn">বাংলা</option>
+  <option value="ta">தமிழ்</option>
+  <option value="te">తెలుగు</option>
+  <option value="gu">ગુજરાતી</option>
+  <option value="kn">ಕನ್ನಡ</option>
+  <option value="ur">اردو</option>
+</select>
+
+<button class="status-btn" onclick="window.location.href='status.html'">📬 Requests</button>
+<button class="profile-btn" onclick="goToProfile()">👤 Profile</button>
+<button class="logout-btn" onclick="logout()">Logout</button>
+
+    KrishiNect
+    <small id="tagline">~Har Kisan Ka Digital Saathi~</small>
+  </header>
+
+
+<main>  
+    <div class="container">
+  <div class="option-card" onclick="window.location.href='post.html'">
+    <h3 id="postBtn">📤 Post Crop</h3>
+    <p id="postDesc">Add your produce to share or sell easily.</p>
+  </div>
+  <div class="option-card" onclick="window.location.href='listings.html'">
+    <h3 id="viewBtn">📋 View Listings</h3>
+    <p id="viewDesc">Browse local crops available near you.</p>
+  </div>
+  <div class="option-card" onclick="window.location.href='mandi.html'">
+    <h3 id="mandiBtn">📈 Mandi Bhav</h3>
+    <p id="mandiDesc">Check real-time prices from nearby mandis.</p>
+  </div>
+  <div class="option-card" onclick="window.location.href='advisory.html'">
+    <h3 id="advisoryBtn">📚 Crop Advisory</h3>
+    <p id="advisoryDesc">Offline tips in your preferred language.</p>
+  </div>
+  <div class="option-card" onclick="window.location.href='forum.html'">
+  <h3 id="forumBtn">💬 Community Forum</h3>
+  <p id="forumDesc">Discuss local issues, market prices, and farming challenges with fellow farmers.</p>
+</div>
+</div>
+</main>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";    
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+  authDomain: "krishinect-39b8e.firebaseapp.com",
+  projectId: "krishinect-39b8e",
+  storageBucket: "krishinect-39b8e.firebasestorage.app",
+  messagingSenderId: "894539525913",
+  appId: "1:894539525913:web:1100591bbfc25c7148df88"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  
+
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "signin.html";
+  }
+});
+
+
+const db = getFirestore(app);
+
+  // Logout function
+  window.logout = async function () {
+    try {
+      await signOut(auth);
+      alert("Logged out successfully!");
+      window.location.href = "signin.html";
+    } catch (error) {
+      alert("Logout failed: " + error.message);
+    }
+  };
+
+ 
+
+    window.goToProfile = function () {
+      location.href = "profile.html";
+    };
+</script>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crop Advisory – KrishiNect</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+    </select>
+    <h1 id="pageTitle">📚 Crop Advisory</h1>
+    <small id="tagline">Official seasonal guidance for farmers</small>
+  </header>
+
+  <main>
+    <button onclick="window.location.href='index.html'" class="back-btn">← Back to Home</button>
+    <section class="advisory-section" id="advisorySection" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 1rem;">
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDazi9i6ZyQDfPrk8gx4pc1sp2RJvA2hNM",
+      authDomain: "krishinect-39b8e.firebaseapp.com",
+      projectId: "krishinect-39b8e",
+      storageBucket: "krishinect-39b8e.appspot.com",
+      messagingSenderId: "894539525913",
+      appId: "1:894539525913:web:1100591bbfc25c7148df88"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const section = document.getElementById("advisorySection");
+
+    async function loadAdvisories(lang = "en") {
+      const querySnapshot = await getDocs(collection(db, "advisories"));
+      section.innerHTML = "";
+
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+
+        const div = document.createElement("div");
+        div.className = "advice-card";
+        div.innerHTML = `
+          <h3>${data.crop}</h3>
+          <p>
+            ${data.sowing ? `<strong>Sowing:</strong> ${data.sowing}<br>` : ""}
+            ${data.harvest ? `<strong>Harvest:</strong> ${data.harvest}<br>` : ""}
+            <strong>Govt Tip:</strong> ${lang === "hi" ? data.tip_hi : data.tip_en}
+          </p>
+        `;
+        section.appendChild(div);
+      });
+
+      document.getElementById("pageTitle").textContent = lang === "hi" ? "📚 फसल सलाह" : "📚 Crop Advisory";
+      document.getElementById("tagline").textContent = lang === "hi" ? "सरकारी मौसमी मार्गदर्शन" : "Official seasonal guidance for farmers";
+    }
+
+    // Initial load
+    loadAdvisories("en");
+
+    document.getElementById("language").addEventListener("change", (e) => {
+      loadAdvisories(e.target.value);
+    });
+  </script>
+</body>
+</html>

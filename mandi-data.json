@@ -1,0 +1,20 @@
+[
+  {
+    "commodity": "Wheat",
+    "state": "Uttar Pradesh",
+    "market": "Kanpur",
+    "minPrice": 2000,
+    "maxPrice": 2200,
+    "modalPrice": 2100,
+    "date": "2025-06-27"
+  },
+  {
+    "commodity": "Tomato",
+    "state": "Maharashtra",
+    "market": "Pune",
+    "minPrice": 1200,
+    "maxPrice": 1600,
+    "modalPrice": 1400,
+    "date": "2025-06-27"
+  }
+]
