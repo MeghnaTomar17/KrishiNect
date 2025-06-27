@@ -2,156 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>📈 Mandi Bhav – KrishiNect</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Mandi Prices – KrishiNect</title>
   <style>
-    header {
-      background-color: #4CAF50;
-      color: white;
-      padding: 1.5rem 1rem;
-      text-align: center;
-      position: relative;
-    }
-
-    #language {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-
-    h1#pageTitle {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
-    }
-
-    small#tagline {
-      display: block;
-      font-size: 1.2rem;
-      color: #f0f0f0;
-    }
-
-    .mandi-section {
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f8e9;
+      margin: 0;
       padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+    }
+
+    .mandi-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .mandi-card {
       background-color: #ffffff;
-      border-left: 5px solid #4CAF50;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-      padding: 1rem;
-      width: 300px;
+      border-left: 6px solid #4caf50;
+      padding: 1rem 1.5rem;
       border-radius: 12px;
-      transition: transform 0.2s;
-    }
-
-    .mandi-card:hover {
-      transform: scale(1.03);
-      background-color: #f1f8e9;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      width: 280px;
     }
 
     .mandi-card h3 {
-      margin-top: 0;
       color: #2e7d32;
+      margin-bottom: 0.5rem;
     }
 
     .mandi-card p {
+      margin: 0.3rem 0;
       font-size: 0.95rem;
-      color: #333;
-      line-height: 1.5;
-    }
-
-    .back-btn {
-      background-color: #4caf50;
-      color: white;
-      padding: 8px 16px;
-      margin: 20px auto;
-      display: block;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .back-btn:hover {
-      background-color: #388e3c;
     }
   </style>
 </head>
 <body>
-  <header>
-    <select id="language">
-      <option value="en">English</option>
-      <option value="hi">हिन्दी</option>
-    </select>
-    <h1 id="pageTitle">📈 Mandi Bhav</h1>
-    <small id="tagline">Real-Time Market Prices</small>
-  </header>
-
-  <button onclick="window.location.href='index.html'" class="back-btn">← Back to Home</button>
-
-  <section class="mandi-section" id="mandiContainer">
-    <p>Loading mandi prices...</p>
-  </section>
+  <h2>📈 Real-Time Mandi Prices</h2>
+  <div class="mandi-container" id="mandiContainer">Loading prices...</div>
 
   <script>
-    const translations = {
-      en: {
-        title: "📈 Mandi Bhav",
-        tagline: "Real-Time Market Prices",
-      },
-      hi: {
-        title: "📈 मंडी भाव",
-        tagline: "वास्तविक समय के बाजार मूल्य"
-      }
-    };
+    fetch("http://localhost:3000/api/mandi-prices") // 🔁 Replace with your deployed URL if hosted
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("mandiContainer");
+        container.innerHTML = "";
 
-    document.getElementById("language").addEventListener("change", function () {
-      const lang = this.value;
-      const t = translations[lang] || translations["en"];
-      document.getElementById("pageTitle").innerText = t.title;
-      document.getElementById("tagline").innerText = t.tagline;
-    });
+        data.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "mandi-card";
 
-    async function fetchMandiPrices() {
-      const response = await fetch("https://mandibhav-api.onrender.com/latest");
-      if (!response.ok) throw new Error("Failed to fetch data");
-      return await response.json();
-    }
-
-    async function loadMandiPrices() {
-      const container = document.getElementById("mandiContainer");
-      container.innerHTML = "";
-
-      try {
-        const data = await fetchMandiPrices();
-
-        data.slice(0, 15).forEach(entry => {
-          const div = document.createElement("div");
-          div.className = "mandi-card";
-          div.innerHTML = `
-            <h3>${entry.commodity}</h3>
-            <p><strong>📍 Mandi:</strong> ${entry.market}</p>
-            <p><strong>🗓 Date:</strong> ${entry.arrival_date}</p>
-            <p><strong>💰 Min Price:</strong> ₹${entry.min_price}</p>
-            <p><strong>💰 Max Price:</strong> ₹${entry.max_price}</p>
-            <p><strong>💸 Modal Price:</strong> ₹${entry.modal_price}</p>
+          card.innerHTML = `
+            <h3>${item.crop}</h3>
+            <p><strong>🛒 Mandi:</strong> ${item.mandi}</p>
+            <p><strong>💰 Price:</strong> ${item.price}</p>
+            <p><strong>📅 Date:</strong> ${item.date}</p>
           `;
-          container.appendChild(div);
-        });
-      } catch (err) {
-        container.innerHTML = `<p style="color:red;">⚠️ Unable to fetch mandi prices right now.</p>`;
-        console.error(err);
-      }
-    }
 
-    loadMandiPrices();
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        document.getElementById("mandiContainer").innerHTML = "<p>⚠️ Failed to load mandi data.</p>";
+        console.error("Mandi API error:", error);
+      });
   </script>
 </body>
 </html>
